@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url(''); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #000; /* Ensures text is readable over the background */
+        }
+
+        /* Custom Styling */
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .category-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+        }
+        .footer {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px 0;
+            color: #000; /* Ensure text in the footer is readable */
+        }
+
+        .input-group {
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent search bar */
+            border-radius: 5px;
+            padding: 10px;
+        }
+        /* Navbar Styling */
+.navbar {
+    padding: 10px 20px; /* Adjust padding */
+    background-color: #f8f9fa; /* Light background */
+    border-bottom: 2px solid #ddd; /* Optional: subtle bottom border */
+}/* Semi-transparent footer */
+
+/* Logo and Website Name */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333; /* Adjust text color */
+    text-decoration: none;
+}
+
+.navbar-brand img {
+    height: 60px; /* Adjust logo size */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+/* Navbar Links */
+.navbar-nav {
+    display: flex;
+    gap: 20px; /* Space between links */
+    align-items: center;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333; /* Link color */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+/* Dropdown Styling */
+.navbar-nav .dropdown-menu {
+    min-width: 150px;
+}
+
+.navbar-nav .dropdown-item {
+    font-size: 14px;
+}
+
+/* Mobile Menu */
+@media (max-width: 991px) {
+    .navbar-nav {
+        gap: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../images/page1/logo.jpg" alt="Logo" class="me-2">Benefit Bharat
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="states.html">States</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ut.html">Union Territories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Subsidy Calculator</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Language
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en')">English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('hi')">हिंदी</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('te')">తెలుగు</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('kn')">ಕನ್ನಡ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="container mt-4">
+        <div class="input-group mb-4">
+            <input type="text" id="schemeSearch" class="form-control" placeholder="Enter category name to search...">
+            <button class="btn btn-primary" type="button">Search</button>
+        </div>
+    </div>
+    
+
+    <!-- Categories Section -->
+    <div class="container">
+        <h2 class="mb-3"> Indian Government Schemes </h2>
+        <div class="row">
+            <!-- Agriculture Category -->
+            
+            <div class="col-md-4 mb-4">
+                <a href="agri1.html" class="card-link">
+                    <div class="card p-3 category-card">
+                        <img src="../images/page1/1.avif" class="card-icon mb-2" alt="Agriculture Icon">
+                        <h5 class="card-title">Agriculture</h5>
+                        <p class="card-text">Explore schemes related to agriculture and farmers' welfare.</p>
+                    </div>
+                </a>
+            </div>
+            
+
+            <!-- Healthcare Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/2.jpg" class="card-icon mb-2" alt="Healthcare Icon">
+                    <h5 class="card-title">Healthcare</h5>
+                    <p class="card-text">Find healthcare schemes and medical aid information.</p>
+                </div>
+            </div>
+
+            <!-- Women Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/3.jpg" class="card-icon mb-2" alt="Women Icon">
+                    <h5 class="card-title">Women</h5>
+                    <p class="card-text">Discover schemes aimed at women empowerment.</p>
+                </div>
+            </div>
+
+            <!-- Physically Handicapped Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/4.jpg" class="card-icon mb-2" alt="Disability Icon">
+                    <h5 class="card-title">Physically Handicapped</h5>
+                    <p class="card-text">Support schemes for persons with disabilities.</p>
+                </div>
+            </div>
+
+            <!-- Education Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/5.jpg" class="card-icon mb-2" alt="Education Icon">
+                    <h5 class="card-title">Education</h5>
+                    <p class="card-text">Access educational schemes and scholarships.</p>
+                </div>
+            </div>
+
+            <!-- Sports Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/7.jpeg"class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Sports</h5>
+                    <p class="card-text">Schemes supporting sports and athletes.</p>
+                </div>
+            </div>
+            <!-- Pension and oldage Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/6.jpeg" class="card-icon mb-2" alt="Pensions Icon">
+                    <h5 class="card-title">Pensions/Old Age</h5>
+                    <p class="card-text">Schemes for senior citizens and pension benefits.</p>
+                </div>
+            </div>
+            <!-- Minorites Category -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/page1/8.jpeg" class="card-icon mb-2" alt="Minorities Icon">
+                    <h5 class="card-title">Minorities</h5>
+                    <p class="card-text">Special schemes and support for minority communities.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 GovScheme Portal. All Rights Reserved.</p>
+            <p>Contact: info@govscheme.com | Phone: +91-1234567890</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function changeLanguage(language) {
+            // Logic to dynamically load content based on the selected language
+            alert('Language switched to: ' + language); // Placeholder for actual implementation
+        }
+        
+            const translations = {
+                en: {
+                    title: "Government Schemes Portal",
+                    searchPlaceholder: "Enter scheme name to search...",
+                    searchButton: "Search",
+                    schemeCategories: "Scheme Categories",
+                    agriculture: "Agriculture",
+                    agricultureDesc: "Explore schemes related to agriculture and farmers' welfare.",
+                    healthcare: "Healthcare",
+                    healthcareDesc: "Find healthcare schemes and medical aid information.",
+                    women: "Women",
+                    womenDesc: "Discover schemes aimed at women empowerment.",
+                    disabled: "Physically Handicapped",
+                    disabledDesc: "Support schemes for persons with disabilities.",
+                    education: "Education",
+                    educationDesc: "Access educational schemes and scholarships.",
+                    sports: "Sports",
+                    sportsDesc: "Schemes supporting sports and athletes.",
+                    pensions: "Pensions/Old Age",
+                    pensionsDesc: "Schemes for senior citizens and pension benefits.",
+                    minorities: "Minorities",
+                    minoritiesDesc: "Special schemes and support for minority communities."
+                },
+                hi: {
+                    title: "सरकारी योजनाएं पोर्टल",
+                    searchPlaceholder: "योजना का नाम दर्ज करें...",
+                    searchButton: "खोजें",
+                    schemeCategories: "योजना श्रेणियाँ",
+                    agriculture: "किसान",
+                    agricultureDesc: "कृषि और किसानों के कल्याण से संबंधित योजनाओं की खोज करें।",
+                    healthcare: "स्वास्थ्य",
+                    healthcareDesc: "स्वास्थ्य योजनाएँ और चिकित्सा सहायता जानकारी प्राप्त करें।",
+                    women: "महिलाएं",
+                    womenDesc: "महिला सशक्तिकरण के लिए योजनाएं खोजें।",
+                    disabled: "विकलांग",
+                    disabledDesc: "विकलांग व्यक्तियों के लिए सहायता योजनाएँ।",
+                    education: "शिक्षा",
+                    educationDesc: "शैक्षिक योजनाएँ और छात्रवृत्तियां प्राप्त करें।",
+                    sports: "खेल",
+                    sportsDesc: "खेल और खिलाड़ियों के समर्थन के लिए योजनाएं।",
+                    pensions: "पेंशन/वृद्धावस्था",
+                    pensionsDesc: "वरिष्ठ नागरिकों और पेंशन लाभों के लिए योजनाएँ।",
+                    minorities: "अल्पसंख्यक",
+                    minoritiesDesc: "अल्पसंख्यक समुदायों के लिए विशेष योजनाएँ और समर्थन।"
+                },
+                te: {
+                    title: "ప్రభుత్వ పథకాలు పోర్టల్",
+                    searchPlaceholder: "పథకం పేరును నమోదు చేయండి...",
+                    searchButton: "వెతకండి",
+                    schemeCategories: "పథకాల వర్గాలు",
+                    agriculture: "రైతులు",
+                    agricultureDesc: "వ్యవసాయం మరియు రైతుల సంక్షేమానికి సంబంధించిన పథకాలను అన్వేషించండి.",
+                    healthcare: "ఆరోగ్య సేవలు",
+                    healthcareDesc: "ఆరోగ్య పథకాలు మరియు వైద్య సహాయ సమాచారం పొందండి.",
+                    women: "మహిళలు",
+                    womenDesc: "మహిళా సాధికారత కోసం పథకాలను కనుగొనండి.",
+                    disabled: "వికలాంగులు",
+                    disabledDesc: "వికలాంగుల కోసం మద్దతు పథకాలు.",
+                    education: "విద్య",
+                    educationDesc: "విద్యా పథకాలు మరియు విద్యార్థి వేతనాలు పొందండి.",
+                    sports: "క్రీడలు",
+                    sportsDesc: "క్రీడల మరియు క్రీడాకారుల మద్దతు కోసం పథకాలు.",
+                    pensions: "పెన్షన్లు/వృద్ధాప్యం",
+                    pensionsDesc: "పెద్దలకు మరియు పెన్షన్ ప్రయోజనాల కోసం పథకాలు.",
+                    minorities: "అల్పసంఖ్యాకులు",
+                    minoritiesDesc: "అల్పసంఖ్యాక సముదాయాల కోసం ప్రత్యేక పథకాలు మరియు మద్దతు."
+                },
+                kn: {
+                    title: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳ ಪೋರ್ಟಲ್",
+                    searchPlaceholder: "ಯೋಜನೆಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ...",
+                    searchButton: "ಹುಡುಕಿ",
+                    schemeCategories: "ಯೋಜನೆ ವಿಭಾಗಗಳು",
+                    agriculture: "ಕೃಷಕರು",
+                    agricultureDesc: "ಕೃಷಿ ಮತ್ತು ರೈತರ ಕಲ್ಯಾಣಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಯೋಜನೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.",
+                    healthcare: "ಆರೋಗ್ಯ",
+                    healthcareDesc: "ಆರೋಗ್ಯ ಯೋಜನೆಗಳು ಮತ್ತು ವೈದ್ಯಕೀಯ ನೆರವು ಮಾಹಿತಿ ಪಡೆಯಿರಿ.",
+                    women: "ಮಹಿಳೆಯರು",
+                    womenDesc: "ಮಹಿಳಾ ಸಬಲೀಕರಣಕ್ಕಾಗಿ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ.",
+                    disabled: "ದೈಹಿಕ ಅಸಮರ್ಥರು",
+                    disabledDesc: "ಅಸಮರ್ಥರಿಗಾಗಿ ಬೆಂಬಲ ಯೋಜನೆಗಳು.",
+                    education: "ಶಿಕ್ಷಣ",
+                    educationDesc: "ಶೈಕ್ಷಣಿಕ ಯೋಜನೆಗಳು ಮತ್ತು ಶಾಲಾ ವೆಚ್ಚಗಳನ್ನು ಪಡೆಯಿರಿ.",
+                    sports: "ಕ್ರೀಡೆ",
+                    sportsDesc: "ಕ್ರೀಡೆ ಮತ್ತು ಕ್ರೀಡಾಪಟುಗಳಿಗೆ ಬೆಂಬಲ ಯೋಜನೆಗಳು.",
+                    pensions: "ಪಿಂಚಣಿ/ಹಳೆಯ ವಯಸ್ಸು",
+                    pensionsDesc: "ಹಿರಿಯ ನಾಗರಿಕರು ಮತ್ತು ಪಿಂಚಣಿ ಪ್ರಯೋಜನಗಳಿಗಾಗಿ ಯೋಜನೆಗಳು.",
+                    minorities: "ಅಲ್ಪಸಂಖ್ಯಾತರು",
+                    minoritiesDesc: "ಅಲ್ಪಸಂಖ್ಯಾತ ಸಮುದಾಯಗಳಿಗಾಗಿ ವಿಶೇಷ ಯೋಜನೆಗಳು ಮತ್ತು ಬೆಂಬಲ."
+                },
+            };
+        
+            function changeLanguage(language) {
+                localStorage.setItem("selectedLanguage", language);
+                updateLanguageContent(language);
+            }
+            
+            function updateLanguageContent(language) {
+                const content = translations[language];
+                if (content) {
+                    document.title = content.title;
+                    document.querySelector(".input-group input").placeholder = content.searchPlaceholder;
+                    document.querySelector(".input-group button").textContent = content.searchButton;
+                    document.querySelector("h2").textContent = content.schemeCategories;
+            
+                    const categories = document.querySelectorAll(".category-card");
+                    const categoryKeys = ["agriculture", "healthcare", "women", "disabled", "education", "sports", "pensions", "minorities"];
+                    categoryKeys.forEach((key, index) => {
+                        categories[index].querySelector(".card-title").textContent = content[key];
+                        categories[index].querySelector(".card-text").textContent = content[key + "Desc"];
+                    });
+                } else {
+                    alert("Language not supported!");
+                }
+            }
+            
+            document.addEventListener("DOMContentLoaded", function () {
+                const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+                updateLanguageContent(savedLanguage);
+            });
+            
+        
+        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("schemeSearch");
+            const categoryCards = document.querySelectorAll(".category-card");
+    
+            searchInput.addEventListener("input", function () {
+                const query = searchInput.value.toLowerCase();
+    
+                categoryCards.forEach((card) => {
+                    const title = card.querySelector(".card-title").textContent.toLowerCase();
+                    if (title.includes(query)) {
+                        card.parentElement.style.display = "block"; // Show the matching category
+                    } else {
+                        card.parentElement.style.display = "none"; // Hide non-matching category
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

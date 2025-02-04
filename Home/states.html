@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styling */
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .category-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+        /* Logo and Website Name */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333; /* Adjust text color */
+    text-decoration: none;
+}
+
+.navbar-brand img {
+    height: 60px; /* Adjust logo size */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+/* Navbar Links */
+.navbar-nav {
+    display: flex;
+    gap: 20px; /* Space between links */
+    align-items: center;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333; /* Link color */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+/* Dropdown Styling */
+.navbar-nav .dropdown-menu {
+    min-width: 150px;
+}
+
+.navbar-nav .dropdown-item {
+    font-size: 14px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../images/page1/logo.jpg" alt="Logo" class="me-2">
+                Benfit Bharat
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="states.html">States</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ut.html">Union Territories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Subsidy Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="container mt-4">
+        <div class="input-group mb-4">
+            <input type="text" class="form-control" placeholder="Enter category  name to search...">
+            <button class="btn btn-primary" type="button">Search</button>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="container">
+        <h2 class="mb-3">States </h2>
+        <div class="row">
+            <!-- Telangana-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s1.jpg" class="card-icon mb-2" alt="Farmers Icon">
+                    <h5 class="card-title">Telangana</h5>
+                    <p class="card-text">Explore schemes related to Telangana welfare.</p>
+                    <a href="../states/telangana.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+
+            <!-- Andra pradesh -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s2.jpg" class="card-icon mb-2" alt="Healthcare Icon">
+                    <h5 class="card-title">Andhra pradesh</h5>
+                    <p class="card-text">Find ap schemes information.</p>
+                    <a href="../states/andrapradesh.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+
+            <!-- Karnataka -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s3.jpeg" class="card-icon mb-2" alt="Women Icon">
+                    <h5 class="card-title">Karnataka</h5>
+                    <p class="card-text">Discover karnataka schemes </p>
+                    <a href="../states/karnataka.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+
+            <!--Tamilnadu -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s4.jpg" class="card-icon mb-2" alt="Disability Icon">
+                    <h5 class="card-title">Tamilnadu</h5>
+                    <p class="card-text">TN schemes </p>
+                    <a href="../states/tamilnadu.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+
+            <!-- Kerala -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s5.jpeg" class="card-icon mb-2" alt="Education Icon">
+                    <h5 class="card-title">Kerala </h5>
+                    <p class="card-text">Kerala schemes </p>
+                    <a href="../states/kerala.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+
+            <!-- Maharastra -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s6.jpg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Maharasta </h5>
+                    <p class="card-text">Schemes for Maharasta</p>
+                    <a href="../states/maharastra.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Gujarat-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s7.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Gujarat </h5>
+                    <p class="card-text">Schemes for Gujarat</p>
+                    <a href="../states/gujarat.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--uttar pradesh-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s8.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Uttar pradesh </h5>
+                    <p class="card-text">Schemes for Uttar pradesh</p>
+                    <a href="../states/uttarpradesh.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Goa-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s9.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Goa </h5>
+                    <p class="card-text">Schemes for Goa </p>
+                    <a href="../states/goa.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Uttarkhand-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s10.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Uttarkhand </h5>
+                    <p class="card-text">Schemes for Uttarkhand</p>
+                    <a href="../states/uttarkhand.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Jharkhand-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s11.jpg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Jharkhand </h5>
+                    <p class="card-text">Schemes for Jharkahand</p>
+                    <a href="../states/jharkhand.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Chattisgrah-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s12.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Chattisgrah </h5>
+                    <p class="card-text">Schemes for Chattisgrah</p>
+                    <a href="../states/chattisgrah.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Arunachal pradesh-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s13.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Arunachal Pradesh</h5>
+                    <p class="card-text">Schemes for Arunachal pradesh</p>
+                    <a href="../states/arunachalpradesh.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Himachal Pradesh-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s14.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Himachal Pradesh </h5>
+                    <p class="card-text">Schemes for Himachal Pradesh</p>
+                    <a href="../states/himachalpradesh.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Punjab-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s15.png" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Punjab </h5>
+                    <p class="card-text">Schemes for Punjab</p>
+                    <a href="../states/punjab.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Bihar-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s16.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Bihar </h5>
+                    <p class="card-text">Schemes for Bihar</p>
+                    <a href="../states/bihar.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!--Rajasthan-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s17.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Rajasthan </h5>
+                    <p class="card-text">Schemes for Rajasthan</p>
+                    <a href="../states/rajasthan.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- West Bengal-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s18.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">West Bengal </h5>
+                    <p class="card-text">Schemes for West Bengal</p>
+                    <a href="../states/westbengal.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Jammu Kashmir-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s19.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Jammu & Kashmir </h5>
+                    <p class="card-text">Schemes for Jammu & Kashmir</p>
+                    <a href="../states/jammukashmir.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Odisha-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s20.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Odisha </h5>
+                    <p class="card-text">Schemes for odisha</p>
+                    <a href="../states/odisha.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Meghalaya-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s21.webp" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Meghalaya </h5>
+                    <p class="card-text">Schemes for Meghalaya</p>
+                    <a href="../states/meghalaya.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Manipur-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s22.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Manipur </h5>
+                    <p class="card-text">Schemes for Manipur</p>
+                    <a href="../states/manipur.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Tripura -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s23.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Tripura </h5>
+                    <p class="card-text">Schemes for Tripura</p>
+                    <a href="../states/tripura.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Sikkim-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s24.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Sikkim </h5>
+                    <p class="card-text">Schemes for Sikkim</p>
+                    <a href="../images/sikkim.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Nagaland-->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s25.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Nagaland </h5>
+                    <p class="card-text">Schemes for Nagaland</p>
+                    <a href="../states/nagaland.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Mizoram -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s26.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Mizoram </h5>
+                    <p class="card-text">Schemes for Mizoram</p>
+                    <a href="../states/mizoram.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+            <!-- Assam -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 category-card">
+                    <img src="../images/states/s27.jpeg" class="card-icon mb-2" alt="Sports Icon">
+                    <h5 class="card-title">Assam </h5>
+                    <p class="card-text">Schemes for Assam</p>
+                    <a href="../states/assam.html" class="btn btn-link">Select here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 GovScheme Portal. All Rights Reserved.</p>
+            <p>Contact: info@govscheme.com | Phone: +91-1234567890</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
