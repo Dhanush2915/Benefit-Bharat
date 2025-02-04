@@ -123,18 +123,7 @@
                     <li class="nav-item"><a class="nav-link" href="states.html">States</a></li>
                     <li class="nav-item"><a class="nav-link" href="ut.html">Union Territories</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Subsidy Calculator</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Language
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en')">English</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('hi')">हिंदी</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('te')">తెలుగు</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('kn')">ಕನ್ನಡ</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    <li><div id="myid"></div></li>
             </div>
         </div>
     </nav>
@@ -247,3 +236,15 @@
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    <script>
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', // The default language of your page (English)
+                includedLanguages: 'hi,te,kn,ml,bn,pa,gu,or,ta,ur,mr,sa,ne', // List of Indian languages (Hindi, Telugu, Kannada, etc.)
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'myid'); // 'myid' is the ID of the div where the widget will appear
+        }
+    </script>
+</body>
+</html>
