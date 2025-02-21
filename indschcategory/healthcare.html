@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('../images/schemecatg/health.jpg'); /* Replace with actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .container {
+            flex: 3;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(34, 139, 34, 0.9);
+            color: #fff;
+            border-left: 2px solid #006400;
+            overflow-y: auto;
+            max-height: 100vh;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #f0e68c;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2e8b57;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #006400;
+            text-align: center;
+        }
+
+
+    </style>
+    <script>
+        const schemes = [
+        
+  {
+    id: 1,
+    name: "AYUSHMAN BHARAT HEALTH INFRASTRUCTURE MISSION (ABHIM)",
+    eligibility: "all",
+    details: "Aims to improve health infrastructure, surveillance, and research in urban and rural areas to handle health crises and pandemics.",
+    link: "https://ab-hwc.nhp.gov.in/"
+  },
+  {
+    id: 2,
+    name: "AYUSHMAN BHARAT",
+    eligibility: "all",
+    details: "Health insurance scheme providing financial protection for secondary and tertiary healthcare to economically vulnerable families,Families based on SECC 2011, RSBY beneficiaries not in SECC 2011, SC/ST households, and families without an earning member above 16 earning over Rs. 2.5 lakh",
+    link: "https://pmjay.gov.in/"
+  },
+  {
+    id: 3,
+    name: "National Health Mission (NHM)",
+    eligibility: "all",
+    details: "Provides accessible, affordable, and high-quality healthcare services in line with National Health Policy 2017 and SDG 3.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 4,
+    name: "NATIONAL RURAL HEALTH MISSION (NRHM)",
+    eligibility: "Rural population",
+    details: "Ensures quality healthcare in rural areas with a community-owned, decentralized system addressing multiple health determinants.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 5,
+    name: "NATIONAL URBAN HEALTH MISSION",
+    eligibility: "Urban slums.",
+    details: "Provides essential primary healthcare services to urban populations, reducing out-of-pocket expenses.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 6,
+    name: "JANANI SURAKSHA YOJANA",
+    eligibility: "Pregnant women.",
+    details: "Promotes institutional deliveries to reduce maternal and infant mortality.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 7,
+    name: "JANANI SHISHU SURAKSHA KARYAKRAM",
+    eligibility: "Pregnant women.",
+    details: "Provides financial aid to reduce out-of-pocket expenses for maternal care and neonatal health,Pregnant women who are using government health facilities for delivery",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 8,
+    name: "PRADHAN MANTRI SURAKSHIT MATRITVA ABHIYAAN",
+    eligibility: "Pregnant women .",
+    details: "Ensures safe pregnancies and deliveries to reduce maternal and infant mortality,in their 2nd & 3rd trimesters",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 9,
+    name: "UNIVERSAL IMMUNIZATION PROGRAMME",
+    eligibility: "All children",
+    details: "Provides free vaccines against 12 preventable diseases, improves immunization coverage, and strengthens surveillance,",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 10,
+    name: "MISSION INDRADHANUSH",
+    eligibility: "Children up to 2 years , pregnant women .",
+    details: "Ensures full immunization, especially in low-coverage and hard-to-reach areas.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 11,
+    name: "RASHTRIYA KISHOR SWASTHYA KARYAKRAM",
+    eligibility: "age between 10-19 years.",
+    details: "Addresses nutrition, reproductive health, substance misuse, non-communicable diseases, and mental health in adolescents.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 12,
+    name: "RASHTRIYA BAL SWASTHYA KARYAKRAM (RBSK)",
+    eligibility: "Children 0-6 years .",
+    details: "Provides early identification and intervention for birth defects, deficiencies, diseases, and developmental delays,Children 0-6 years in rural/urban slums and students in government schools (1st-12th)",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 13,
+    name: "LAQSHYA- LABOUR ROOM QUALITY IMPROVEMENT INITIATIVE",
+    eligibility: "Pregnant women",
+    details: "Improves care quality in labor rooms and maternity OTs to reduce maternal and newborn mortality.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 14,
+    name: "SURAKSHIT MATRITVA AASHWASAN (SUMAN) INITIATIVE",
+    eligibility: "Pregnant women,  newborns.",
+    details: "Ensures respectful maternity care and zero preventable maternal and newborn deaths,mothers up to 6 months postpartum, and all sick",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 15,
+    name: "MOTHER’S ABSOLUTE AFFECTION (MAA)",
+    eligibility: "post-delivery",
+    details: "Promotes breastfeeding and related counseling to prevent early malnutrition.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 16,
+    name: "UMBRELLA SCHEME FOR FAMILY WELFARE AND OTHER HEALTH INTERVENTIONS",
+    eligibility: "family planning",
+    details: "Promotes wellness, modern contraceptive prevalence, family planning, and child-mother health.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 17,
+    name: "INTENSIFIED DIARRHEA CONTROL FORTNIGHT (IDCF)",
+    eligibility: "Children under 5 ",
+    details: "Ensures ORS and Zinc treatment, and promotes proper diarrhea management behaviors,Children under 5 suffering from diarrhea.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 18,
+    name: "National Program for Control of Blindness & Visual Impairment (NPCB&VI)",
+    eligibility: "blind people",
+    details: "Reduces blindness prevalence, strengthens eye care services, and aligns with WHO definitions.",
+    link: "https://nhm.gov.in/"
+  },
+  {
+    id: 19,
+    name: "INTEGRATED CHILD DEVELOPMENT SERVICES (ICDS)",
+    eligibility: "Children 0-3 years, caregivers.",
+    details: "Prevents child undernutrition, reduces mortality and malnutrition, and supports child development.",
+    link: "https://wcd.nic.in/"
+  },
+  {
+    id: 20,
+    name: "BETI BACHAO BETI PADHAO (BBBP)",
+    eligibility: "girls",
+    details: "Prevents gender-biased sex selection, ensures girl child protection, survival, and education.",
+    link: "https://wcd.nic.in/"
+  },
+  {
+    id: 21,
+    name: "Kishori Health Cards",
+    eligibility: " girls in Anganwadi Centres.",
+    details: "Tracks health details of adolescent girls including BMI and nutritional status.",
+    link: "https://wcd.nic.in/"
+  },
+  
+  {
+    id: 22,
+    name: "RAJIV GANDHI SCHEME FOR EMPOWERMENT OF ADOLESCENT BOYS - SAKSHAM",
+    eligibility: " boys (11-18 years).",
+    details: "Supports overall development to make boys self-reliant and gender-sensitive.",
+    link: "https://wcd.nic.in/"
+  },
+  {
+    id: 23,
+    name: "SAKHI ONE STOP CENTRES",
+    eligibility: "girls below 18 .",
+    details: "Provides medical, legal, psychological, and counseling support under one roof for women affected by violence.",
+    link: "https://wcd.nic.in/"
+  },
+  {
+    "id": 24,
+    "name": "National AIDS Control Programme-IV (NACP-IV)",
+    "eligibility": "Aids patients.",
+    "details": "Reduces new HIV infections by 50% (from NACP III baseline) and provides care and treatment for persons living with HIV/AIDS.",
+    "link": "https://www.india.gov.in"
+  },
+{
+    "id": 25,
+    "name": "Affordable Medicines And Reliable Implants For Treatment (AMRIT) Program",
+    "eligibility": "cancer patients",
+    "details": "AMRIT pharmacies provide cancer and cardiovascular drugs, and cardiac implants at 60–90% discounts.",
+    "link": "https://www.india.gov.in"
+  },
+{
+    "id": 26,
+    "name": "Pradhan Mantri Swasthya Suraksha Yojana",
+    "eligibility": "all",
+    "details": "Addresses regional imbalances in affordable healthcare by establishing AIIMS and upgrading government medical colleges.",
+    "link": "https://www.india.gov.in"
+  },
+  {
+    "id": 27,
+    "name": "Nikshay Poshan Yojana (NKY)",
+    "eligibility": "TB patients",
+    "details": "Provides Rs.500/month incentives for TB patients under treatment through DBT.All TB patients registered/notified after 1st April 2018.",
+    "link": "https://www.india.gov.in"
+  },
+  {
+    id: 28,
+    name: "MusQan Initiative",
+    eligibility: "Children below 12 years",
+    details: "Ensures provision of quality child-friendly services in public health facilities to reduce preventable newborn and child morbidity and mortality. Integrated within the National Quality Assurance Standards (NQAS) framework, which aligns with global best practices for public health facilities, including District Hospitals, CHCs, and PHCs.",
+    link: "https://nhsrcindia.org/musqan-initiative"
+  },
+  {
+    id: 29,
+    name: "Intensified Diarrhea Control Fortnight (IDCF)",
+    eligibility: "Children under 5 ",
+    details: "Aims to ensure high coverage of ORS and Zinc use in children with diarrhea nationwide while promoting appropriate caregiver behavior for diarrhea prevention and management, with a focus on high-priority areas and vulnerable communities,Children under 5 years suffering from diarrhea",
+    link: "https://nhm.gov.in/idcf"
+  },
+{
+    id: 30,
+    name: "Saksham Anganwadi and Poshan 2.0 (Mission Poshan 2.0)",
+    eligibility: "Children under 6 years , adolescent girls, pregnant women, lactating mothers.",
+    details: "Addresses challenges of malnutrition through a strategic shift in nutrition content and delivery. This centrally sponsored scheme operates from 2021-22 to 2025-26.",
+    link: "https://wcd.nic.in/schemes/mission-poshan-2-0"
+  },
+  {
+    "id": 31,
+    "name": "Dakshata Programme",
+    "eligibility": "maternal ,newborn",
+    "details": "Improves quality of maternal and newborn care during intra- and immediate postpartum periods through competency training.",
+    "link": "https://www.india.gov.in"
+  },
+  {
+    "id": 32,
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "eligibility": "Pregnant women ,lactating mothers",
+    "details": "Provides financial incentives for improving health and nutrition of mothers and reducing malnutrition,excluding Central/State Government employees.",
+    "link": "https://www.india.gov.in"
+  },
+  
+
+
+        
+            
+        
+            
+              
+           
+           
+          
+        ];
+
+        function filterSchemes() {
+            const dropdown = document.getElementById("eligibility-dropdown");
+            const selectedEligibility = dropdown.value;
+
+            const filteredSchemes = schemes.filter(scheme => {
+                if (selectedEligibility === "all") return true;
+                return scheme.eligibility.toLowerCase().includes(selectedEligibility.toLowerCase());
+            });
+
+            displaySchemes(filteredSchemes);
+        }
+
+        function displaySchemes(schemesToDisplay) {
+            const cardsContainer = document.getElementById("cards-container");
+            cardsContainer.innerHTML = ""; // Clear previous content
+
+            if (schemesToDisplay.length === 0) {
+                cardsContainer.innerHTML = "<p>No schemes match the selected eligibility criteria.</p>";
+                return;
+            }
+
+            schemesToDisplay.forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const linkButton = scheme.link
+            ? `<a href="${scheme.link}" target="_blank" style="color: blue; text-decoration: underline;">Click here for details</a>`
+            : "";
+                card.innerHTML = `
+                    <h3>${scheme.name}</h3>
+                    <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                    <p>${scheme.details}</p>
+                    <p>${linkButton}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+
+
+        
+
+        function populateSidebar() {
+            const sidebar = document.getElementById("sidebar-list");
+            const sortedSchemes = [...schemes].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedSchemes.forEach(scheme => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.textContent = scheme.name;
+                link.onclick = () => scrollToScheme(scheme.name);
+                listItem.appendChild(link);
+                sidebar.appendChild(listItem);
+            });
+        }
+
+        function scrollToScheme(schemeName) {
+            const schemeCard = Array.from(document.querySelectorAll(".card h3"))
+                .find(el => el.textContent === schemeName);
+
+            if (schemeCard) {
+                schemeCard.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        window.onload = function () {
+            filterSchemes(); // Show all schemes by default on page load
+            populateSidebar();
+        };
+
+        
+        
+    </script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+</head>
+<body>
+    
+       <div class="container">
+        <h1>Indian Government Schemes for farmers</h1>
+        <label for="eligibility-dropdown">Select Eligibility:</label>
+        <select id="eligibility-dropdown" class="dropdown" onchange="filterSchemes()">
+            <option value="all">All </option>
+            <option value="Rural population">Rural population </option>
+            <option value="girls ">girl</option>
+            <option value="age between 10-19 years">age between 10-19 years </option>
+            <option value="Pregnant women">Pregnant women</option>
+            <option value="Children upto 2 years">Children upto 2 years</option>
+            <option value="newborns">New born</option>
+            <option value="post-delivery">post-delivery</option>
+            <option value="family planning">family planning</option>
+            <option value="maternal ">maternal </option>
+            <option value="lactating mothers">lactating mothers</option>
+             <option value="Children under 5">children under 5</option>
+            <option value="urban slums">urban slums</option>
+            <option value="blind people">blind people</option>
+            <option value="boys 11-18 years"> boys 11-18 years</option>
+            <option value="Children 0- 6 years">Children 0-6 years</option>
+            <option value="girls attending Anganwadi Centres">girls attending Anganwadi Centres</option>
+            <option value="children below 12 years">children below 12 years</option>
+            <option value="children under 6">children under 6</option>
+            <option value="girls below 18">girls below 18</option>
+            <option value="Children below 12 years">Children below 12 years</option>
+            <option value="All children">All children</option>
+            <option value="Aids patients">Aids patients</option>
+            <option value="cancer patients">cancer patients</option>
+            <option value="TB patients">Tb patients</option>
+            
+        </select>
+
+        <div id="cards-container" class="cards">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>All Schemes (A-Z)</h3>
+        <ul id="sidebar-list">
+            <!-- List items will be dynamically populated -->
+        </ul>
+    </div>
+</body>
+</html>

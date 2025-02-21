@@ -102,17 +102,28 @@
     .navbar-nav {
         gap: 10px;
     }
+
 }
 
     </style>
-    <script type="text/javascript">
+    <script>
+        // Initialize Google Translate
         function googleTranslateElementInit() {
             new google.translate.TranslateElement(
-                {pageLanguage: 'en', includedLanguages: 'hi,te,kn,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
                 'google_translate_element'
             );
         }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+
+
     
 </head>
 <body>
@@ -124,7 +135,7 @@
                 <img src="../images/page1/logo.jpg" alt="Logo" class="me-2">Benefit Bharat
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -132,8 +143,8 @@
                     <li class="nav-item"><a class="nav-link" href="states.html">States</a></li>
                     <li class="nav-item"><a class="nav-link" href="ut.html">Union Territories</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Subsidy Calculator</a></li>
-                    <li><div id="myid"></div></li>
-                    
+                    <li class="nav-item"><div id="google_translate_element"></div></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -155,7 +166,7 @@
             <!-- Agriculture Category -->
             
             <div class="col-md-4 mb-4">
-                <a href="agri1.html" class="card-link">
+                <a href="../indschcategory/agriculture.html" class="card-link">
                     <div class="card p-3 category-card">
                         <img src="../images/page1/1.avif" class="card-icon mb-2" alt="Agriculture Icon">
                         <h5 class="card-title">Agriculture</h5>
@@ -167,63 +178,78 @@
 
             <!-- Healthcare Category -->
             <div class="col-md-4 mb-4">
+             <a href="../indschcategory/healthcare.html" class="card-link">
                 <div class="card p-3 category-card">
                     <img src="../images/page1/2.jpg" class="card-icon mb-2" alt="Healthcare Icon">
                     <h5 class="card-title">Healthcare</h5>
                     <p class="card-text">Find healthcare schemes and medical aid information.</p>
                 </div>
+             </a>
             </div>
 
             <!-- Women Category -->
             <div class="col-md-4 mb-4">
+             <a href="../indschcategory/women.html" class="card-link">
                 <div class="card p-3 category-card">
                     <img src="../images/page1/3.jpg" class="card-icon mb-2" alt="Women Icon">
                     <h5 class="card-title">Women</h5>
                     <p class="card-text">Discover schemes aimed at women empowerment.</p>
                 </div>
+              </a>
             </div>
 
             <!-- Physically Handicapped Category -->
             <div class="col-md-4 mb-4">
+             <a href="../indschcategory/disabilityy.html" class="card-link">
                 <div class="card p-3 category-card">
                     <img src="../images/page1/4.jpg" class="card-icon mb-2" alt="Disability Icon">
                     <h5 class="card-title">Physically Handicapped</h5>
                     <p class="card-text">Support schemes for persons with disabilities.</p>
                 </div>
+              </a>
+
             </div>
 
             <!-- Education Category -->
             <div class="col-md-4 mb-4">
+             <a href="../indschcategory/education.html" class="card-link">
                 <div class="card p-3 category-card">
                     <img src="../images/page1/5.jpg" class="card-icon mb-2" alt="Education Icon">
                     <h5 class="card-title">Education</h5>
                     <p class="card-text">Access educational schemes and scholarships.</p>
                 </div>
+            </a>
             </div>
 
             <!-- Sports Category -->
             <div class="col-md-4 mb-4">
+             <a href="../indschcategory/sports.html" class="card-link">
                 <div class="card p-3 category-card">
                     <img src="../images/page1/7.jpeg"class="card-icon mb-2" alt="Sports Icon">
                     <h5 class="card-title">Sports</h5>
                     <p class="card-text">Schemes supporting sports and athletes.</p>
                 </div>
+             </a>
             </div>
             <!-- Pension and oldage Category -->
             <div class="col-md-4 mb-4">
-                <div class="card p-3 category-card">
+                <a href="../indschcategory/pension.html" class="card-link">
+                    <div class="card p-3 category-card">
                     <img src="../images/page1/6.jpeg" class="card-icon mb-2" alt="Pensions Icon">
                     <h5 class="card-title">Pensions/Old Age</h5>
                     <p class="card-text">Schemes for senior citizens and pension benefits.</p>
+                </a>
                 </div>
             </div>
             <!-- Minorites Category -->
             <div class="col-md-4 mb-4">
+             <a href="../indschcategory/minorities.html" class="card-link"><
                 <div class="card p-3 category-card">
                     <img src="../images/page1/8.jpeg" class="card-icon mb-2" alt="Minorities Icon">
                     <h5 class="card-title">Minorities</h5>
                     <p class="card-text">Special schemes and support for minority communities.</p>
                 </div>
+             </a>
             </div>
             
         </div>
@@ -259,18 +285,8 @@
             });
         });
     </script>
-    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    
 
-
-<script>
-    function loadGoogleTranslate() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en', // The default language of your page (English)
-            includedLanguages: 'hi,te,kn,ml,bn,pa,gu,or,ta,ur,mr,sa,ne', // List of Indian languages (Hindi, Telugu, Kannada, etc.)
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'myid'); // 'myid' is the ID of the div where the widget will appear
-    }
-</script>
 
 
     

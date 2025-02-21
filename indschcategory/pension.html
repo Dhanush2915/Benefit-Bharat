@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('../images/schemecatg/pension.jpg'); /* Replace with actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .container {
+            flex: 3;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(34, 139, 34, 0.9);
+            color: #fff;
+            border-left: 2px solid #006400;
+            overflow-y: auto;
+            max-height: 100vh;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #f0e68c;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2e8b57;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #006400;
+            text-align: center;
+        }
+
+
+    </style>
+    <script>
+        const schemes = [
+        
+  {
+    id: 1,
+    name: "PRADHAN MANTRI VAYA VANDANA YOJANA (PMVVY)",
+    eligibility: "Senior citizens aged 60 years and above.",
+    details: "Provides social security during old age and protects elderly persons against a future fall in interest income due to uncertain market conditions.",
+    link: "https://financialservices.gov.in"
+  },
+  {
+    id: 2,
+    name: "ATAL PENSION YOJANA (APY)",
+    eligibility: "Indians aged 18-40 with a savings bank account in a bank or post-office.",
+    details: "Ensures a fixed minimum pension at the age of 60 years, focused on citizens in the unorganized sector.",
+    link: "https://npscra.nsdl.co.in/scheme-details-apy.php"
+  },
+  {
+    id: 3,
+    name: "NATIONAL PENSION SYSTEM (NPS)",
+    eligibility: "all citizens.",
+    details: "Provides retirement income, institutes pension reforms, and inculcates a habit of saving for retirement.",
+    link: "https://npscra.nsdl.co.in"
+  },
+  {
+    id: 4,
+    name: "Integrated Programme for Older Persons",
+    eligibility: "Senior citizens.",
+    details: "Improves the quality of life for senior citizens by providing basic amenities and encouraging active ageing through support for capacity building of organizations and communities.",
+    link: "https://socialjustice.gov.in/schemes"
+  },
+  {
+    id: 5,
+    name: "Varishtha Pension Bima Yojana",
+    eligibility: "Senior citizens aged 60 years and above",
+    details: "Provides social security with an assured pension based on an 8% guaranteed return per annum for 10 years, implemented through LIC.",
+    link: "https://licindia.in"
+  },
+  {
+    id: 6,
+    name: "Senior Able Citizens for Re Employment in Dignity (SACRED) Portal",
+    eligibility: "Senior citizens seeking employment.",
+    details: "A dedicated employment exchange portal for senior citizens to connect with employers, promoting a healthy, happy, empowered, and self-reliant life.",
+    link: "https://sacred.dosje.gov.in"
+  },
+  {
+    id: 7,
+    name: "Atal Vayo Abhyuday Yojana (AVYAY)",
+    eligibility: "Senior citizens .",
+    details: "Focuses on empowering senior citizens for a dignified life through the National Action Plan, supporting senior citizen homes and continuous care homes.",
+    link: "https://socialjustice.gov.in"
+  }
+
+
+        
+        ];
+
+        function filterSchemes() {
+            const dropdown = document.getElementById("eligibility-dropdown");
+            const selectedEligibility = dropdown.value;
+
+            const filteredSchemes = schemes.filter(scheme => {
+                if (selectedEligibility === "all") return true;
+                return scheme.eligibility.toLowerCase().includes(selectedEligibility.toLowerCase());
+            });
+
+            displaySchemes(filteredSchemes);
+        }
+
+        function displaySchemes(schemesToDisplay) {
+            const cardsContainer = document.getElementById("cards-container");
+            cardsContainer.innerHTML = ""; // Clear previous content
+
+            if (schemesToDisplay.length === 0) {
+                cardsContainer.innerHTML = "<p>No schemes match the selected eligibility criteria.</p>";
+                return;
+            }
+
+            schemesToDisplay.forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const linkButton = scheme.link
+            ? `<a href="${scheme.link}" target="_blank" style="color: blue; text-decoration: underline;">Click here for details</a>`
+            : "";
+                card.innerHTML = `
+                    <h3>${scheme.name}</h3>
+                    <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                    <p>${scheme.details}</p>
+                    <p>${linkButton}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+
+
+        
+
+        function populateSidebar() {
+            const sidebar = document.getElementById("sidebar-list");
+            const sortedSchemes = [...schemes].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedSchemes.forEach(scheme => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.textContent = scheme.name;
+                link.onclick = () => scrollToScheme(scheme.name);
+                listItem.appendChild(link);
+                sidebar.appendChild(listItem);
+            });
+        }
+
+        function scrollToScheme(schemeName) {
+            const schemeCard = Array.from(document.querySelectorAll(".card h3"))
+                .find(el => el.textContent === schemeName);
+
+            if (schemeCard) {
+                schemeCard.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        window.onload = function () {
+            filterSchemes(); // Show all schemes by default on page load
+            populateSidebar();
+        };
+
+        
+        
+    </script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+</head>
+<body>
+    
+       <div class="container">
+        <h1>Indian Government Schemes for Old age people </h1>
+        <label for="eligibility-dropdown">Select Eligibility:</label>
+        <select id="eligibility-dropdown" class="dropdown" onchange="filterSchemes()">
+            <option value="all">All </option>
+            <option value="Senior citizens aged 60 years and above">aged 60 years and above</option>
+            <option value="Indians aged 18-40 with a savings bank account in a bank or post-office">  aged 18-40 with a savings bank account in a bank or post-office</option>
+            <option value="Senior citizens">Senior citizens </option>
+            <option value="Senior citizens seeking employment">Senior citizens employment</option>
+            
+        </select>
+
+        <div id="cards-container" class="cards">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>All Schemes (A-Z)</h3>
+        <ul id="sidebar-list">
+            <!-- List items will be dynamically populated -->
+        </ul>
+    </div>
+</body>
+</html>

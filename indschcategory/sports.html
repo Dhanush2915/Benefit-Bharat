@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('../images/schemecatg/sports.jpg'); /* Replace with actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .container {
+            flex: 3;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(34, 139, 34, 0.9);
+            color: #fff;
+            border-left: 2px solid #006400;
+            overflow-y: auto;
+            max-height: 100vh;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #f0e68c;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2e8b57;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #006400;
+            text-align: center;
+        }
+
+
+    </style>
+    <script>
+        const schemes = [
+        {
+            id: 1,
+            name: "Target Olympic Podium Scheme (TOPS)",
+            eligibility: " selected by Indian olympic board ",
+            details: "Provides assistance to India's top athletes by funding their training and development to enhance their chances of winning medals at the Olympics,identified as potential Olympic medal winners for Paris 2024 and Los Angeles 2028.",
+            link: "https://yas.gov.in/sports/target-olympic-podium-scheme"
+          },
+          {
+            id: 2,
+            name:" Rashtriya Yuva Sashaktikaran Karyakram",
+            eligibility: "Youth (15-29 years) , adolescents (10-19 years)",
+            details: "Aims to develop personality and leadership qualities in youth and engage them in nation-building activities. Includes seven sub-schemes such as NYKS, NYC, and NPYAD.",
+            link: "https://yas.gov.in/schemes/rashtriya-yuva-sashaktikaran-karyakram"
+          },
+          {
+            id: 3,
+            name: "Khelo India National Programme for Development of Sports",
+            eligibility: "all",
+            details: "Encourages mass participation in sports and promotion of excellence through talent identification, infrastructure development, and competitions like Khelo India Winter Games.",
+            link: "https://kheloindia.gov.in/"
+          },
+          {
+            id: 4,
+            name: "Free Education For Sports Medal Winners / Participants Of National/International Events",
+            eligibility: "Medal winners in national games , participants in recognized international sporting events.",
+            details: "Provides financial assistance for higher education to elite sportspersons studying in recognized universities, colleges, and institutions.",
+            link: "https://yas.gov.in/sports/free-education-scheme"
+          },
+          {
+            id: 5,
+            name: "Pandit Deendayal Upadhyay National Welfare Fund For Sportspersons",
+            eligibility: "ranks in national/international competitions.",
+            details: "Provides financial assistance to former outstanding sportspersons who are facing economic hardships, suffered injuries, or are living in poverty.",
+            link: "https://yas.gov.in/sports/pdunwfs"
+          },
+          {
+            id: 6,
+            name: "National Youth Corps (NYC)",
+            eligibility: "age 18-29.",
+            details: "Engages disciplined young volunteers in nation-building activities to serve as role models in improving public ethics and dignity of labor, with a minimum qualification of class 10, computer literacy, and a passion for social work.",
+            link: "https://nyks.nic.in/"
+          },
+          {
+            id: 7,
+            name: "National Youth Award (NYA)",
+            eligibility: " age 15-29 ",
+            details: "Recognizes and encourages young individuals and organizations for their exemplary contributions to social service and national development,who have made significant contributions to community service or nation-building.",
+            link: "https://yas.gov.in/schemes/national-youth-award"
+          },
+          {
+            id: 8,
+            name: "Tenzing Norgay National Adventure Award (TNNAA)",
+            eligibility: " achievements in land, air, or water adventure activities.",
+            details: "Recognizes individuals for exceptional contributions in adventure sports, promoting endurance, risk-taking, and teamwork,Individuals with outstanding leadership qualities, adventure discipline.",
+            link: "https://yas.gov.in/awards/tenzing-norgay-national-adventure-award"
+          }
+          
+        
+            
+              
+           
+           
+          
+        ];
+
+        function filterSchemes() {
+            const dropdown = document.getElementById("eligibility-dropdown");
+            const selectedEligibility = dropdown.value;
+
+            const filteredSchemes = schemes.filter(scheme => {
+                if (selectedEligibility === "all") return true;
+                return scheme.eligibility.toLowerCase().includes(selectedEligibility.toLowerCase());
+            });
+
+            displaySchemes(filteredSchemes);
+        }
+
+        function displaySchemes(schemesToDisplay) {
+            const cardsContainer = document.getElementById("cards-container");
+            cardsContainer.innerHTML = ""; // Clear previous content
+
+            if (schemesToDisplay.length === 0) {
+                cardsContainer.innerHTML = "<p>No schemes match the selected eligibility criteria.</p>";
+                return;
+            }
+
+            schemesToDisplay.forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const linkButton = scheme.link
+            ? `<a href="${scheme.link}" target="_blank" style="color: blue; text-decoration: underline;">Click here for details</a>`
+            : "";
+                card.innerHTML = `
+                    <h3>${scheme.name}</h3>
+                    <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                    <p>${scheme.details}</p>
+                    <p>${linkButton}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+
+
+        
+
+        function populateSidebar() {
+            const sidebar = document.getElementById("sidebar-list");
+            const sortedSchemes = [...schemes].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedSchemes.forEach(scheme => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.textContent = scheme.name;
+                link.onclick = () => scrollToScheme(scheme.name);
+                listItem.appendChild(link);
+                sidebar.appendChild(listItem);
+            });
+        }
+
+        function scrollToScheme(schemeName) {
+            const schemeCard = Array.from(document.querySelectorAll(".card h3"))
+                .find(el => el.textContent === schemeName);
+
+            if (schemeCard) {
+                schemeCard.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        window.onload = function () {
+            filterSchemes(); // Show all schemes by default on page load
+            populateSidebar();
+        };
+
+        
+        
+    </script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+</head>
+<body>
+    
+       <div class="container">
+        <h1>Indian Government Schemes for Athletes</h1>
+        <label for="eligibility-dropdown">Select Eligibility:</label>
+        <select id="eligibility-dropdown" class="dropdown" onchange="filterSchemes()">
+            <option value="all">ALL</option>
+            <option value="selected by Indian olympic board ">selected by Indian olympic board </option>
+            <option value="Youth (15-29 years)">Youth (15-29 years)</option>
+            <option value="adolescents (10-19 years">adolescents (10-19 years)</option>
+            <option value="Medal winners in national games ">Medal winners in national games</option>
+            <option value=" participants in recognized international sporting events"> participants in recognized international sporting events</option>
+            <option value="ranks in national/international competitions">ranks in national/international competitions</option>
+            <option value="age 18-29">age 18-29</option>
+            <option value ="age 15-29">age 15-29</option>
+            <option value="achievements in land, air, or water adventure activities">achievements in land, air, or water adventure activities</option>        
+        </select>
+
+        <div id="cards-container" class="cards">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>All Schemes (A-Z)</h3>
+        <ul id="sidebar-list">
+            <!-- List items will be dynamically populated -->
+        </ul>
+    </div>
+</body>
+</html>

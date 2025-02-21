@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('../images/schemecatg/agri.webp'); /* Replace with actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .container {
+            flex: 3;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(34, 139, 34, 0.9);
+            color: #fff;
+            border-left: 2px solid #006400;
+            overflow-y: auto;
+            max-height: 100vh;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #f0e68c;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2e8b57;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #006400;
+            text-align: center;
+        }
+
+
+    </style>
+    <script>
+        const schemes = [
+        {
+            id:1,
+            name:"PRADHAN MANTRI KISAN SAMMAN NIDHI SCHEME (PM-KISAN)",
+            eligibility:"All farmers",
+            details:"To provide income support to all land-holding eligible farmer families (families include husband, wife and minor children).₹6,000 per year in three equal instalments of ₹ 2,000 each every four month.",
+            link: "https://pmkisan.gov.in/" ,
+           
+        },
+        {
+            id:2,
+            name:"PRADHAN MANTRI FASAL BIMA YOJANA (PMFBY):",
+            eligibility:"All farmers",
+            details:"Financial support to farmers suffering crop loss/damage, stabilizing their income and ensuring flow of credit to the agriculture sector.",
+            link:"https://pmfby.gov.in/",
+        },
+     
+        
+        {
+                id: 3,
+                name: "PRADHAN MANTRI KISAN MAAN-DHAN YOJANA (PM-KMY)",
+                eligibility: "land up to 2 hectares,age between 18-40",
+                details: "To provide social security to Small and Marginal Farmers in their old age.",
+                link: "https://pmkisan.gov.in/",
+            },
+            {
+                id:4,
+                name:"NATIONAL MISSSION ON EDIBLE OILS -OIL PALM (NMEO-OP)",
+                eligibility:"All farmers",
+                details:"To enhance the edible oilseeds production by harnessing Oil Palm area expansion.",
+                link:"https://nmeo.dac.gov.in/",
+
+            },
+            {
+                id:5,
+                name:"MISSION FOR INTEGRATED DEVELOPMENT OF HORTICULTURE (MIDH):",
+                eligibility:"own land farmers ",
+                details:"Holistic development of horticulture in the country Assistance: Financial & technical assistance is provided to States/UT.",
+                link:"https://midh.gov.in/",
+            },
+            {
+                id:6,
+                name:"KISAN CREDIT CARD (KCC):",
+                eligibility:"All farmers,self help groups ",
+                details:": To meet the financial requirements of farmers at various stages of farming.Adequate and timely credit support from the banking system under a single window with flexible and simplified procedure for meeting: short term credit requirements for cultivation of crops, Post-harvest expenses, Produce marketing loan, Consumption requirements of Farmer Household, Working Capital for maintenance of farm assets, Investment credit requirement for agriculture and allied activities.",
+                link:"https://fasalrin.gov.in/",
+            },
+            {
+                id:7,
+                name:"SOIL HEALTH CARD SCHEME :",
+                eligibility:"All farmers",
+                details:"To facilitate farmers for better understanding of soil and Integrated Nutrient Management (INM) Subcomponent of: RKVY cafeteria scheme (Soil Health & Fertility component) .",
+                link:"https://soilhealth.dac.gov.in/",
+            },
+            {
+                id: 8,
+                name: "Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PMAASHA)",
+                eligibility: "All farmers",
+                details: "The scheme ensures farmers receive fair prices for their produce and controls price volatility of essential commodities.",
+                link: "https://agricoop.nic.in",
+              },
+              {
+                id: 10,
+                name: "E-Krishi Samvad",
+                eligibility: "All farmers.",
+                details: "An online platform allowing farmers to approach ICAR for solutions to agricultural issues, including uploading photos for diagnosis.",
+                link: "https://icar.org.in",
+              },
+              {
+                id: 11,
+                name: "e-Rashtriya Kishan Agri Mandi (e-RAKAM)",
+                eligibility: "All farmers,age above  18 ",
+                details: "A digital platform for farmers to sell produce through auctions, connect with buyers, and receive payments directly.",
+                link: "https://www.mstcecommerce.com/auctionhome/erakam/index.jsp",
+              },
+              {
+                id: 12,
+                name: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+                eligibility: "All farmers,age above 18",
+                details: "A crop insurance scheme supporting farmers by providing compensation for crop losses and stabilizing income.",
+                link: "https://pmfby.gov.in",
+              },
+              {
+                id: 13,
+                name: "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+                eligibility: "land up to 5 hectares ,self-help groups.",
+                details: "A scheme aimed at improving water access and use efficiency on farms, promoting sustainable water conservation.",
+                link: "https://pmksy.gov.in",
+              },
+              {
+                id: 14,
+                name: "Pradhan Mantri Kisan Maan-Dhan Yojana (PM-KMY)",
+                eligibility: " land up to 2 hectares,age between 18-40",
+                details: "A pension scheme for small and marginal farmers to ensure social security in their old age.",
+                link: "https://pmkmy.gov.in",
+              },
+              {
+                id: 15,
+                name: "Paramparagat Krishi Vikas Yojana (PKVY)",
+                eligibility: "organic farming",
+                details: "A scheme promoting organic farming to improve soil health, produce chemical-free food, and reduce costs.",
+                link: "https://pgsindia-ncof.gov.in",
+              },
+              {
+                id: 16,
+                name: "Interest Subvention Scheme for Farmers",
+                eligibility:"All farmers,cooperative societies",
+                details: "A scheme providing reduced interest rates on agriculture credit to ensure cost-effective loans for farmers.",
+                link: "https://agricoop.nic.in",
+              },
+              {
+                id: 17,
+                name: "Urea Subsidy",
+                eligibility: "All farmers.",
+                details: "A subsidy on urea ensuring farmers receive fertilizers at a reduced price while maintaining supply costs.",
+                link: "https://fert.nic.in",
+              },
+              {
+                id: 18,
+                name: "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+                eligibility: " fish farmers,fish workers",
+                details: "A scheme focused on increasing fish production, improving post-harvest management, and creating jobs in the fisheries sector.",
+                link: "https://pmmsy.dof.gov.in",
+              },
+              {
+                id: 19,
+                name: "Blue Revolution",
+                eligibility: "Fish farmers",
+                details: "A scheme to modernize fisheries, increase fish production, and ensure sustainable development of the sector.",
+                link: "https://dof.gov.in",
+              },
+              {
+                id: 20,
+                name: "Dairy Processing and Infrastructure Development Fund (DIDF) Scheme",
+                eligibility: "dairy farming,milk producers,milk unions",
+                details: "A scheme to enhance milk production and modernize dairy infrastructure.",
+                link: "https://nddb.coop/didf",
+              },
+              {
+                id: 21,
+                name: "National Mission on Bovine Productivity",
+                eligibility: "dairy farming.",
+                details: "A scheme to improve milk production and make dairying more remunerative for farmers.",
+                link: "https://dahd.nic.in",
+              },
+              {
+                id: 22,
+                name: "National Program for Bovine Breeding and Dairy Development (NPBBDD)",
+                eligibility:"Dairy farmers,cooperative societies ",
+                details: "A scheme to improve indigenous bovine breeds, provide artificial insemination services, and strengthen dairy infrastructure.",
+                link: "https://dahd.nic.in",
+              },
+              {
+                id: 23,
+                name: "National Dairy Plan-I",
+                eligibility: "dairy farmers ,milk producers",
+                details: "A scheme to enhance milk production and provide greater access to the organized milk-processing sector.",
+                link: "https://nddb.coop",
+              },
+              {
+                id: 24,
+                name: "Dairy Entrepreneurship Development Scheme (DEDS)",
+                eligibility: "dairy farmers,entrepreneures",
+                details: "A scheme to promote modern dairy farms, improve milk processing at the village level, and generate self-employment.",
+                link: "https://nabard.org",
+              },
+              {
+                id: 25,
+                name: "Quality Milk Programme",
+                eligibility: "Dairy farmers ,cooperatives societies.",
+                details: "A scheme to ensure milk quality standards and increase India’s share in global exports.",
+                link: "https://nddb.coop"
+              },
+              {
+                id: 26,
+                name: "Rashtriya Gokul Mission (RGM)",
+                eligibility: "Small and marginal farmers",
+                details: "A scheme to conserve indigenous bovine breeds and promote sustainable livestock farming.",
+                link: "https://dahd.nic.in",
+              },
+              {
+                id: 27,
+                name: "National Animal Disease Control Programme (NADCP)",
+                eligibility: "Livestock owners.",
+                details: "A scheme to vaccinate livestock against Foot and Mouth Disease (FMD) and brucellosis.",
+                link: "https://dahd.nic.in",
+              },
+              {
+                id: 28,
+                name: "Pradhan Mantri Kisan Sampada Yojana (PMKSY)",
+                eligibility: "All farmers.",
+                details: "A scheme to create modern infrastructure for supply chain management from farm gate to retail outlets.",
+                link: "https://mofpi.gov.in/pmksy",
+              },
+              {
+                id: 29,
+                name: "Animal Husbandry Infrastructure Development Fund (AHIDF)",
+                eligibility: "animal husbandry ",
+                details: "A scheme to enhance milk and meat processing capacities and product diversification.",
+                link: "https://ahidf.udyamimitra.in",
+              },
+              {
+                id: 30,
+                name: "Paramparagat Krishi Vikas Yojana (PKVY)",
+                eligibility: " organic farming.",
+                details: "A scheme to promote sustainable farming systems and reduce hazardous chemical use.",
+                link: "https://pgsindia-ncof.gov.in",
+              },
+              
+           
+           
+          
+        ];
+
+        function filterSchemes() {
+            const dropdown = document.getElementById("eligibility-dropdown");
+            const selectedEligibility = dropdown.value;
+
+            const filteredSchemes = schemes.filter(scheme => {
+                if (selectedEligibility === "all") return true;
+                return scheme.eligibility.toLowerCase().includes(selectedEligibility.toLowerCase());
+            });
+
+            displaySchemes(filteredSchemes);
+        }
+
+        function displaySchemes(schemesToDisplay) {
+            const cardsContainer = document.getElementById("cards-container");
+            cardsContainer.innerHTML = ""; // Clear previous content
+
+            if (schemesToDisplay.length === 0) {
+                cardsContainer.innerHTML = "<p>No schemes match the selected eligibility criteria.</p>";
+                return;
+            }
+
+            schemesToDisplay.forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const linkButton = scheme.link
+            ? `<a href="${scheme.link}" target="_blank" style="color: blue; text-decoration: underline;">Click here for details</a>`
+            : "";
+                card.innerHTML = `
+                    <h3>${scheme.name}</h3>
+                    <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                    <p>${scheme.details}</p>
+                    <p>${linkButton}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+
+
+        
+
+        function populateSidebar() {
+            const sidebar = document.getElementById("sidebar-list");
+            const sortedSchemes = [...schemes].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedSchemes.forEach(scheme => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.textContent = scheme.name;
+                link.onclick = () => scrollToScheme(scheme.name);
+                listItem.appendChild(link);
+                sidebar.appendChild(listItem);
+            });
+        }
+
+        function scrollToScheme(schemeName) {
+            const schemeCard = Array.from(document.querySelectorAll(".card h3"))
+                .find(el => el.textContent === schemeName);
+
+            if (schemeCard) {
+                schemeCard.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        window.onload = function () {
+            filterSchemes(); // Show all schemes by default on page load
+            populateSidebar();
+        };
+
+        
+        
+    </script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+</head>
+<body>
+    
+       <div class="container">
+        <h1>Indian Government Schemes for farmers</h1>
+        <label for="eligibility-dropdown">Select Eligibility:</label>
+        <select id="eligibility-dropdown" class="dropdown" onchange="filterSchemes()">
+            <option value="all">All farmers</option>
+            <option value="land up to 2 hectares">Land up to 2 hectares</option>
+            <option value="land up to 5 hectares"> Land up to 5 hectares</option>
+            <option value="Tenant farmers ">Tenant farmer </option>
+            <option value="age between 18-40">Age between 18-40</option>
+            <option value="own land farmers">Own land farmers</option>
+            <option value="self-help groups">Self-help groups</option>
+            <option value="age above 18">Age above 18</option>
+            <option value="organic farming">Organic farming</option>
+            <option value="cooperatives societies">Corperative societies</option>
+            <option value="fish farmers">Fish farmers</option>
+            <option value="fish workers">Fish workers</option>
+            <option value="dairy farming">Dairy farming </option>
+            <option value="milk producers">Milk producers</option>
+            <option value="milk unions">Milk unions</option>
+            <option value="entrepreneures">Entrepreneures</option>
+            <option value="Small and marginal farmers">Small and marginal farmers</option>
+            <option value="Livestock owners">Livestock owners</option>
+            <option value="animal husbandry">Animal husbandary</option>
+        </select>
+
+        <div id="cards-container" class="cards">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>All Schemes (A-Z)</h3>
+        <ul id="sidebar-list">
+            <!-- List items will be dynamically populated -->
+        </ul>
+    </div>
+</body>
+</html>

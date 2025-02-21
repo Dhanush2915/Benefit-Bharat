@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('../images/schemecatg/mino.jpg'); /* Replace with actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .container {
+            flex: 3;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(34, 139, 34, 0.9);
+            color: #fff;
+            border-left: 2px solid #006400;
+            overflow-y: auto;
+            max-height: 100vh;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #f0e68c;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2e8b57;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #006400;
+            text-align: center;
+        }
+
+
+    </style>
+    <script>
+        const schemes = [
+        {
+            id: 1,
+            name: "Pre-Matric Scholarship Scheme",
+            eligibility: "Students from minority communities studying in Classes IX and X",
+            details:" Provides financial assistance to encourage minority students to continue their education at the pre-matric level, with 30% of scholarships reserved for girls",
+            link: "https://www.minorityaffairs.gov.in/schemes/pre-matric-scholarship",
+          },
+          {
+            id: 2,
+            name: "Post-Matric Scholarship Scheme",
+            eligibility:" Students from minority communities studying in Classes XI to PhD",
+            details: "Offers scholarships to support minority students pursuing higher education, with 30% of scholarships earmarked for girls",
+            link: "https://www.minorityaffairs.gov.in/schemes/post-matric-scholarship",
+          },
+          {
+            id: 3,
+            name:" Merit-cum-Means Scholarship Scheme",
+            eligibility: "Minority students pursuing professional and technical courses at undergraduate and postgraduate levels",
+            details: "Provides financial assistance to meritorious minority students to help them pursue professional and technical courses",
+            link:" https://www.minorityaffairs.gov.in/schemes/merit-cum-means-scholarship"
+          },
+          {
+            id: 4,
+            name:" Pradhan Mantri Virasat Ka Samvardhan (PM VIKAS)",
+            eligibility:" Minority youth and artisans seeking skill development and training",
+            details: "Aims to enhance the employability of minority youth by providing industry-relevant skills training and support for traditional arts and crafts",
+            link: "https://www.minorityaffairs.gov.in/schemes/pm-vikas"
+          },
+          {
+            id: 5,
+            name: "Pradhan Mantri Jan Vikas Karyakram (PMJVK)",
+            eligibility:" Minority communities residing in identified areas",
+            details: "Focuses on creating community infrastructure and basic amenities in areas with significant minority populations to bridge socio-economic gaps",
+            link: "https://www.minorityaffairs.gov.in/schemes/pmjvk"
+          },
+          {
+            id: 6,
+            name: "National Minorities Development and Finance Corporation (NMDFC) Loan Schemes",
+            eligibility: "Minority entrepreneurs and individuals seeking financial assistance for business ventures",
+            details: "Provides concessional loans to minorities for self-employment and income-generating activities",
+            link: "https://www.minorityaffairs.gov.in/schemes/nmdfc-loan-schemes"
+          },
+          {
+            id: 7,
+            name:" Nai Roshni",
+            eligibility: "Minority women aged 18-65 years",
+            details: "Empowers and enhances confidence among minority women by providing leadership development training",
+            link:" https://www.minorityaffairs.gov.in/schemes/nai-roshni"
+          },
+          {
+            id: 8,
+            name: "Jiyo Parsi",
+            eligibility:" Parsi community members facing fertility challenges",
+            details:" Aims to reverse the declining trend of the Parsi population by providing medical assistance and advocacy for fertility",
+            link: "https://www.minorityaffairs.gov.in/schemes/jiyo-parsi"
+          },
+          {
+            id: 9,
+            name: "Nai Udaan",
+            eligibility:" Minority candidates who have cleared preliminary examinations conducted by UPSC, SSC, or State Public Service Commissions",
+            details: "Provides financial support to minority candidates who have cleared preliminary examinations, assisting them in preparing for the main examinations",
+            link: "https://www.minorityaffairs.gov.in/schemes/nai-udaan"
+          },
+          {
+            id: 10,
+            name: "Free Coaching and Allied Scheme",
+            eligibility: "Minority students and candidates preparing for competitive examinations",
+            details:" Offers free coaching to minority students and candidates for employment in government and private sectors",
+            link:" https://www.minorityaffairs.gov.in/schemes/free-coaching-and-allied-scheme"
+          },
+          {
+            id: 11,
+            name: "Maulana Azad National Fellowship (MANF)",
+            eligibility: "Students from minority communities pursuing M.Phil and Ph.D. courses.",
+            details: "Provides financial assistance to students from minority communities to pursue higher education such as M.Phil and Ph.D. The fellowship covers all universities recognized by the University Grants Commission (UGC).",
+            link: "https://www.ugc.ac.in/manf/"
+          },
+          {
+            id: 12,
+            name: "Padho Pardesh",
+            eligibility: "Students from minority communities pursuing higher education abroad.",
+            details: "Offers interest subsidies on educational loans for overseas studies to students belonging to minority communities, aiming to encourage them to pursue higher education abroad.",
+            link: "https://www.minorityaffairs.gov.in/schemes/padho-pardesh"
+          },
+          {
+            id: 13,
+            name: "Seekho Aur Kamao (Learn & Earn)",
+            eligibility: "Youth from minority communities aged 14-35 years.",
+            details: "A skill development initiative aimed at upgrading the skills of minority youth in various modern/traditional vocations depending upon their educational qualification, present economic trends, and market potential.",
+            link: "https://www.minorityaffairs.gov.in/schemes/seekho-aur-kamao"
+          },
+          {
+            id: 14,
+            name: "Nai Manzil",
+            eligibility: "Minority youth without formal school-leaving certificates.",
+            details: "An integrated education and livelihood initiative that provides formal education and skills training to youth from minority communities who do not have formal school-leaving certificates, enabling them to seek better employment and livelihoods.",
+            link: "https://www.minorityaffairs.gov.in/schemes/nai-manzil"
+          },
+          {
+            id: 15,
+            name: "Hamari Dharohar",
+            eligibility: "Organizations and individuals involved in the preservation of minority heritage.",
+            details: "A scheme aimed at preserving the rich heritage of minority communities in India by supporting curation of iconic exhibitions, preservation of literature/ documents, and promotion of calligraphy, among other activities.",
+            link: "https://www.minorityaffairs.gov.in/schemes/hamari-dharohar"
+          },
+          {
+            id: 16,
+            name: "Quami Waqf Board Taraqqiati Scheme (QWBTS) and Shahari Waqf Sampatti Vikas Yojana (SWSVY)",
+            eligibility: "State Waqf Boards and Waqf institutions.",
+            details: "Schemes focused on strengthening State Waqf Boards through computerization of records and providing financial assistance for the development of urban Waqf properties to enhance their income-generating potential.",
+            link: "https://www.minorityaffairs.gov.in/schemes/waqf-development"
+          },
+          {
+            "id": 17,
+            "name": "Digital Gender Atlas for Advancing Girl’s Education in India",
+            "eligibility": "SC, ST, OBC, minority ",
+            "details": "Identifies low-performing geographic pockets for girls, especially marginalized groups, based on gender-related education indicators.",
+            "link": "https://www.india.gov.in"
+          },
+         {
+            id: 18,
+            name: "Kasturba Gandhi Balika Vidyalayas (KGBVs)", 
+            eligibility:"Girls SC, ST, OBC, minorities, BPL families.",
+            details: "Provides quality residential education for underprivileged girls in educationally backward areas.",
+            link: "https://samagra.education.gov.in/kgbv.html"
+          },
+          
+          
+          
+        
+  
+   
+
+
+        
+        ];
+
+        function filterSchemes() {
+            const dropdown = document.getElementById("eligibility-dropdown");
+            const selectedEligibility = dropdown.value;
+
+            const filteredSchemes = schemes.filter(scheme => {
+                if (selectedEligibility === "all") return true;
+                return scheme.eligibility.toLowerCase().includes(selectedEligibility.toLowerCase());
+            });
+
+            displaySchemes(filteredSchemes);
+        }
+
+        function displaySchemes(schemesToDisplay) {
+            const cardsContainer = document.getElementById("cards-container");
+            cardsContainer.innerHTML = ""; // Clear previous content
+
+            if (schemesToDisplay.length === 0) {
+                cardsContainer.innerHTML = "<p>No schemes match the selected eligibility criteria.</p>";
+                return;
+            }
+
+            schemesToDisplay.forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const linkButton = scheme.link
+            ? `<a href="${scheme.link}" target="_blank" style="color: blue; text-decoration: underline;">Click here for details</a>`
+            : "";
+                card.innerHTML = `
+                    <h3>${scheme.name}</h3>
+                    <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                    <p>${scheme.details}</p>
+                    <p>${linkButton}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+
+
+        
+
+        function populateSidebar() {
+            const sidebar = document.getElementById("sidebar-list");
+            const sortedSchemes = [...schemes].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedSchemes.forEach(scheme => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.textContent = scheme.name;
+                link.onclick = () => scrollToScheme(scheme.name);
+                listItem.appendChild(link);
+                sidebar.appendChild(listItem);
+            });
+        }
+
+        function scrollToScheme(schemeName) {
+            const schemeCard = Array.from(document.querySelectorAll(".card h3"))
+                .find(el => el.textContent === schemeName);
+
+            if (schemeCard) {
+                schemeCard.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        window.onload = function () {
+            filterSchemes(); // Show all schemes by default on page load
+            populateSidebar();
+        };
+
+        
+        
+    </script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+</head>
+<body>
+    
+       <div class="container">
+        <h1>Indian Government Schemes for Minorities </h1>
+        <label for="eligibility-dropdown">Select Eligibility:</label>
+        <select id="eligibility-dropdown" class="dropdown" onchange="filterSchemes()">
+            <option value="all">All </option>
+        </select>
+
+        <div id="cards-container" class="cards">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>All Schemes (A-Z)</h3>
+        <ul id="sidebar-list">
+            <!-- List items will be dynamically populated -->
+        </ul>
+    </div>
+</body>
+</html>

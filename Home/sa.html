@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        #google_translate_element {
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</head>
+<body>
+    <header>Welcome to My Multilingual Website</header>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="states.html">States</a></li>
+            <li class="nav-item"><a class="nav-link" href="ut.html">Union Territories</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Subsidy Calculator</a></li>
+          
+            
+            <div id="google_translate_element"></div>
+        </ul>
+            
+    </div>
+    
+    <main>
+        <h2>About This Website</h2>
+        <p>
+            This website allows you to view content in your preferred language. Select a language from the dropdown menu above, and the page will be translated automatically. The selected language will persist across all pages of this website.
+        </p>
+        <h2>Features</h2>
+        <ul style="list-style-type: none; padding: 0;">
+            <li>🌐 Supports multiple Indian languages</li>
+            <li>🔄 Real-time translation using Google Translate</li>
+            <li>✅ Easy language switching for user convenience</li>
+        </ul>
+    </main>
+</body>
+</html>
+
+

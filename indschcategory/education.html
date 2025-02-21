@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('../images/schemecatg/edu.jpg'); /* Replace with actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .container {
+            flex: 3;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(34, 139, 34, 0.9);
+            color: #fff;
+            border-left: 2px solid #006400;
+            overflow-y: auto;
+            max-height: 100vh;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #f0e68c;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2e8b57;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #006400;
+            text-align: center;
+        }
+
+
+    </style>
+    <script>
+        const schemes = [
+        {
+            
+  
+    id: 1,
+    name: "SAMAGRA SHIKSHA- AN INTEGRATED SCHEME FOR SCHOOL EDUCATION",
+    eligibility: "All students",
+    details: "Improves school education holistically from Pre-school to Class 12.",
+    link: "https://samagra.education.gov.in/"
+  },
+  {
+    id: 2,
+    name: "PRADHAN MANTRI UCHCHATAR SHIKSHA ABHIYAN (PM-USHA)",
+    eligibility: "State universities and their affiliated colleges, focus districts.",
+    details: "Improves access, equity, and quality in higher education and prioritizes underserved areas.",
+    link: "https://rusa.education.gov.in/"
+  },
+  {
+    id: 3,
+    name: "PRIME MINISTER’S RESEARCH FELLOWSHIP (PMRF)",
+    eligibility: "Universities student",
+    details: "Offers fellowships to talented individuals to enhance research quality in higher education institutions.",
+    link: "https://pmrf.in/"
+  },
+  {
+    id: 4,
+    name: "NATIONAL SCHEME FOR PM POSHAN IN SCHOOLS",
+    eligibility: "All  students",
+    details: "Enhances enrollment, retention, and attendance while improving nutrition for students in Classes I to VIII in government and aided schools.",
+    link: "https://pmposhan.education.gov.in/"
+  },
+  {
+    id: 5,
+    name: "SARVA SHIKSHA ABHIYAAN",
+    eligibility: "Children age between 6-14 .",
+    details: "Ensures universal elementary education, bridging gender and social gaps, and enhancing learning levels.",
+    link: "https://samagra.education.gov.in/"
+  },
+  {
+    id: 6,
+    name: "Padhe Bharat Badhe Bharat (PBBB)",
+    eligibility: "Elementary level class below 3",
+    details: "Supports early reading, writing, comprehension, and basic numeracy skills for children in classes I and II.",
+    link: "https://samagra.education.gov.in/PadheBharat.jsp"
+  },
+  {
+    id: 7,
+    name: "Rashtriya Avishkar Abhiyan (RAA)",
+    eligibility: "Students age group of 6 - 18 years in government schools , special training centers.",
+    details: "Engages children in science, mathematics, and technology through observation and experimentation with mentoring by reputed institutions.",
+    link: "https://samagra.education.gov.in/RAA.jsp"
+  },
+  {
+    id: 8,
+    name: "Vidyanjali",
+    eligibility: "Children of Government schools, Government-aided schools (Std 1st-8th).",
+    details: "Encourages community and private sector involvement in elementary education through volunteer programs.",
+    link: "https://vidyanjali.education.gov.in/"
+  },
+  {
+    id: 9,
+    name: "Kasturba Gandhi Balika Vidyalayas (KGBVs)", 
+    eligibility:"Girls SC, ST, OBC, minorities, BPL families.",
+    details: "Provides quality residential education for underprivileged girls in educationally backward areas.",
+    link: "https://samagra.education.gov.in/kgbv.html"
+  },
+  {
+    id: 10,
+    name: "Rashtriya Madhyamik Shiksha Abhiyan (RMSA)",
+    eligibility: " age between 15-16.",
+    details: "Improves quality and accessibility of secondary education, ensures equity, and enhances enrollment and retention.",
+    link: "https://samagra.education.gov.in/RMSA.html"
+  },
+  {
+    id: 11,
+    name: "RASHTRIYA UCHCHATAR SHIKSHA ABHIYAN (RUSA)",
+    eligibility: "Higher education  , SC,ST .",
+    details: "Introduces reforms in the state higher education system to enhance autonomy and correct regional imbalances in access.",
+    link: "https://rusa.education.gov.in/"
+  },
+  {
+    id: 12,
+    name: "PRADHAN MANTRI INNOVATIVE LEARNING PROGRAMME – DHRUV",
+    eligibility: "classes 9-12 .",
+    details: "Identifies and encourages talented students, providing guidance to help them reach their potential.",
+    link: "https://innovate.mygov.in/dhruv/"
+  },
+  {
+    id: 13,
+    name: "EDUCATION QUALITY UPGRADATION AND INCLUSION PROGRAMME (EQUIP)",
+    eligibility: "Higher education",
+    details: "Improves quality, access, and employability in higher education through strategic interventions.",
+    link: "Link not available"
+  },
+  {
+    id: 14,
+    name: "UDAAN-GIVING WINGS TO GIRLS",
+    eligibility: "Girls studying in class XI from KVs, NVs, family income below Rs. 6 lakh/annum.",
+    details: "Promotes enrollment of girls in technical education institutes and bridges gaps between school education and engineering entrance exams.",
+    link: "https://www.aicte-india.org/initiative/udaan"
+  },
+  {
+    id: 15,
+    name: "SCHEME FOR HIGHER EDUCATION YOUTH IN APPRENTICESHIP AND SKILLS (SHREYAS)",
+    eligibility: "Higher education",
+    details: "Introduces employment relevance to higher education through skill development and linking education with industry.",
+    link: "https://www.aicte-india.org/education/internship"
+  },
+  {
+    id: 16,
+    name: "Prime Minister’s Research Fellowship Scheme",
+    eligibility: "Graduates from IITs, IISERs, IISc, top Universities.",
+    details: "Attracts the best talent into research to drive innovation and national development.",
+    link: "https://pmrf.in/"
+  },
+  {
+    id: 17,
+    name: "AICTE-SPICES",
+    eligibility: "AICTE-approved institutes.",
+    details: "Promotes student clubs for creativity, ethics, and interests through one-time financial assistance.",
+    link: "https://www.aicte-india.org/schemes/students-development-schemes/spices"
+  },
+  {
+    id: 18,
+    name: "Pradhan Mantri YUVA 2.0 Scheme",
+    eligibility: "Authors age  below 30 .",
+    details: "Mentors young authors to promote reading, writing, and Indian literature globally.",
+    link: "https://innovateindia.mygov.in/yuva/"
+  },
+  {
+    id: 19,
+    name: "TECHNICAL EDUCATION QUALITY IMPROVEMENT PROGRAMME (TEQUIP)",
+    eligibility: "Graduates from IITs, NITs,  top institutions.",
+    details: "Improves the quality of technical education in underserved states with World Bank assistance.",
+    link: "Link not available"
+  },
+  {
+    id: 20,
+    name: "Digital Gender Atlas for Advancing Girl’s Education in India",
+    eligibility: " Girls SC, ST, minorities.",
+    details: "Identifies low-performing regions for girls' education and provides comparative analysis based on gender indicators.",
+    link: "https://samagra.education.gov.in/girlchild.html"
+  },
+  {
+    id: 21,
+    name: "Rashtriya Avishkar Abhiyan (RAA)",
+    eligibility: "age  6 - 18 years.",
+    details: "Motivates children to engage in Science, Mathematics, and Technology through observation, experimentation, and inference.",
+    link: "https://samagra.education.gov.in/RAA.jsp"
+  },
+  {
+    id: 22,
+    name: "Dakshata Programme",
+    eligibility: "Medical officers, staff nurses, ANMs providing maternal , newborn care.",
+    details: "Improves quality of maternal and newborn care during delivery through training and mentoring support.",
+    link: "https://nhm.gov.in"
+  },
+  {
+    id: 23,
+    name: "SCHEME FOR RESIDENTIAL EDUCATION FOR STUDENTS IN HIGH SCHOOLS IN TARGETED AREAS (SHRESTHA)",
+    eligibility: "income up to Rs. 2.5 Lakh.",
+    details: "Provides seats for meritorious SC boys and girls in the best private residential schools for pursuing education from 9th to 12th grade.",
+    link: "https://shrestha.gov.in"
+  },
+  {
+    id: 24,
+    name: "Scheme for Residential Education for Students in High Schools in Targeted Areas (SHRESHTA) for SCs",
+    eligibility: "SC ",
+    details: "Provides seats for meritorious SC boys and girls in the best private residential schools in the country to pursue education from 9th to 12th grade,students studying in class 8th and 10th with parental annual income up to Rs. 2.5 lakh per annum.",
+    link: "https://socialjustice.gov.in/schemes/shreshta"
+  },
+  {
+    id: 25,
+    name: "Beti Bachao Beti Padhao (BBBP)",
+    eligibility: "Girls",
+    details: "Aims to prevent gender-biased sex-selective elimination, ensure survival and protection of the girl child, and promote her education and participation.",
+    link: "https://wcd.nic.in/bbbp-schemes"
+  },
+  {
+    "id": 26,
+    "name": "Udaan-Giving Wings to Girls",
+    "eligibility": "Girls ",
+    "details": "Minimizes the gap between school education and engineering entrance exams. Enhances Science and Mathematics learning at the senior secondary level,girlsfrom KVs, NVs, government schools, or CBSE-affiliated private schools in India,with annual family income less than 6 lakh",
+    "link": "https://www.india.gov.in"
+  },
+  {
+    "id": 27,
+    "name": "Digital Gender Atlas for Advancing Girl’s Education in India",
+    "eligibility": "SC, ST, OBC, minority ",
+    "details": "Identifies low-performing geographic pockets for girls, especially marginalized groups, based on gender-related education indicators.",
+    "link": "https://www.india.gov.in"
+  },
+  {
+    "id": 28,
+    "name": "Rajiv Gandhi Scheme for Empowerment of Adolescent Girls (SABLA)",
+    "eligibility": " girls aged 11–18 years, SC,ST ,BPL families.",
+    "details": "Empowers adolescent girls with nutrition, education, and life skills training.",
+    "link": "https://www.india.gov.in"
+  },
+  
+
+
+
+           
+           
+          
+        ];
+
+        function filterSchemes() {
+            const dropdown = document.getElementById("eligibility-dropdown");
+            const selectedEligibility = dropdown.value;
+
+            const filteredSchemes = schemes.filter(scheme => {
+                if (selectedEligibility === "all") return true;
+                return scheme.eligibility.toLowerCase().includes(selectedEligibility.toLowerCase());
+            });
+
+            displaySchemes(filteredSchemes);
+        }
+
+        function displaySchemes(schemesToDisplay) {
+            const cardsContainer = document.getElementById("cards-container");
+            cardsContainer.innerHTML = ""; // Clear previous content
+
+            if (schemesToDisplay.length === 0) {
+                cardsContainer.innerHTML = "<p>No schemes match the selected eligibility criteria.</p>";
+                return;
+            }
+
+            schemesToDisplay.forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const linkButton = scheme.link
+            ? `<a href="${scheme.link}" target="_blank" style="color: blue; text-decoration: underline;">Click here for details</a>`
+            : "";
+                card.innerHTML = `
+                    <h3>${scheme.name}</h3>
+                    <p><strong>Eligibility:</strong> ${scheme.eligibility}</p>
+                    <p>${scheme.details}</p>
+                    <p>${linkButton}</p>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+
+
+        
+
+        function populateSidebar() {
+            const sidebar = document.getElementById("sidebar-list");
+            const sortedSchemes = [...schemes].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedSchemes.forEach(scheme => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.textContent = scheme.name;
+                link.onclick = () => scrollToScheme(scheme.name);
+                listItem.appendChild(link);
+                sidebar.appendChild(listItem);
+            });
+        }
+
+        function scrollToScheme(schemeName) {
+            const schemeCard = Array.from(document.querySelectorAll(".card h3"))
+                .find(el => el.textContent === schemeName);
+
+            if (schemeCard) {
+                schemeCard.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        window.onload = function () {
+            filterSchemes(); // Show all schemes by default on page load
+            populateSidebar();
+        };
+
+        
+        
+    </script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,te,ta,kn,ml,mr,gu,bn,pa,or,as,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+</head>
+<body>
+    
+       <div class="container">
+        <h1>Indian Government Schemes for Students</h1>
+        <label for="eligibility-dropdown">Select Eligibility:</label>
+        <select id="eligibility-dropdown" class="dropdown" onchange="filterSchemes()">
+            <option value="all">All students</option>
+            <option value="State universities and their affiliated colleges, focus districts.">state universities and their affiliated colleges, focus districts</option>
+            <option value="Universities student"> universities student</option>
+            <option value="Children age between 6-14 ">Children age between 6-14 </option>
+            <option value="Elementary level class below 3">class below 3</option>
+            <option value="Students age group of 6 - 18 years in government schools">age group of 6 - 18 years</option>
+            <option value="special training centers.">special training centers</option>
+            <option value="Children of Government schools" >children govt school</option>
+            <option value="Government-aided schools (Std 1st-8th).">Government-aided schools (Std 1st-8th)</option>
+            <option value="Girls">girls</option>
+            <option value="SC">sc</option>
+            <option value="ST">st</option>
+            <option value="OBC">obc </option>
+            <option value="minorities">Minorities</option>
+            <option value="BPL families">bpl</option>
+            <option value=" age between 15-16.",>age between 15-16,</option>
+            <option value="classes 9-12">classes 9-12 </option>
+            <option value="Girls studying in class XI from KVs, NVs,">Girls studying in class XI from KVs, NVs</option>
+            <option value="Graduates from IITs, IISERs, IISc">Graduates from IITs, IISERs, IIS </option>
+            <option value="top Universities">top universities</option>
+            <option value="AICTE-approved institutes">AICTE-approved institutes</option>
+            <option value="Authors age  below 30 ">Authors age  below 30 </option>
+            <option value="age  6 - 18 years.">age 6-8</option>
+            <option value="Medical officers, staff nurses">"Medical officers, staff nurses</option>
+            <option value="ANMs providing maternal ">ANMs providing maternal</option>
+            <option value="newborn care." >newborn care</option>
+            <option value= "income up to Rs. 2.5 Lakh."> income up to Rs. 2.5 Lakh</option>
+            <option value="NITs">NITs</option>
+
+
+
+        </select>
+
+        <div id="cards-container" class="cards">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>All Schemes (A-Z)</h3>
+        <ul id="sidebar-list">
+            <!-- List items will be dynamically populated -->
+        </ul>
+    </div>
+</body>
+</html>
