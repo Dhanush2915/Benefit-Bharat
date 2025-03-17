@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes Chatbot</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        #chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #007bff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        #chatbot.open {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            background: white;
+            padding: 10px;
+        }
+
+        #chatbox {
+            height: 300px;
+            overflow-y: auto;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+            display: none;
+        }
+
+        .btn { margin: 5px 0; }
+    </style>
+</head>
+<body>
+   <!-- <div id="chatbot">
+        <select id="language" class="form-select mb-2" onchange="translatePage()">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="bn">Bengali</option>
+            <option value="gu">Gujarati</option>
+            <option value="mr">Marathi</option>
+        </select>
+        <div id="chatbot" onclick="toggleChatbot()">
+            <div id="chatbox"></div>
+            <button id="startButton" class="btn btn-primary w-100" style="display: none;" onclick="showMainButtons()">Start</button>
+        </div> -->
+        <div id="chatbot-container">
+            <button id="chatbot-button" onclick="toggleChatbot()">💬</button>
+            <div id="chatbot">
+                <div id="google_translate_element"></div>
+                <select id="language" class="form-select mb-2" onchange="translatePage()">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="bn">Bengali</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="mr">Marathi</option>
+                </select>
+                <div id="chatbox"></div>
+                <button class="btn btn-primary w-100" onclick="showMainButtons()">Start</button>
+            </div>
+        </div>
+    <script>
+        /*const schemes = {
+            
+            Agriculture: {
+                "Andhra Pradesh": ["Rythu Bandhu", "PM Kisan"],
+                "Tamil Nadu": ["Farmer Pension", "Organic Farming Scheme"],
+                "Karnataka": ["Soil Health Card", "Irrigation Support"]
+            },
+            Healthcare: [],
+            Women: [],
+            Pension: [],
+            Sports: [],
+            Minority: [],
+            Education: [],
+            "Physically Handicapped": []
+        };
+
+        const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"];
+        
+        const uts = ["Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep", "Delhi", "Puducherry", "Jammu and Kashmir", "Ladakh", "Lakshadweep"];
+
+        function showMainButtons() {
+            const chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML = `
+                <button class='btn btn-info w-100' onclick='showCategories()'>Indian Schemes</button>
+                <button class='btn btn-info w-100' onclick='showStates()'>State Schemes</button>
+                <button class='btn btn-info w-100' onclick='showUTs()'>UT Schemes</button>
+                <button class='btn btn-info w-100'>Subsidy Calculator</button>
+            `;
+        }
+
+        function showCategories() {
+            let chatbox = document.getElementById("chatbox");
+            let buttons = Object.keys(schemes).map(category => `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}")'>${category}</button>`).join(" ");
+            chatbox.innerHTML = buttons + `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+
+        function showSchemes(category) {
+            let chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML = `<strong>${category} Schemes:</strong><ul id='schemeList'></ul>
+            <button class='btn btn-dark w-100 mt-2' onclick='showCategories()'>Back</button>`;
+        }
+
+        function showStates() {
+            let chatbox = document.getElementById("chatbox");
+            let statesList = states.map(state => `<button class='btn btn-secondary w-100' onclick='showStateCategories("${state}")'>${state}</button>`).join(" ");
+            chatbox.innerHTML = `<strong>States:</strong>${statesList}
+            <button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+
+        function showUTs() {
+            let chatbox = document.getElementById("chatbox");
+            let utsList = uts.map(ut => `<button class='btn btn-secondary w-100' onclick='showStateCategories("${ut}")'>${ut}</button>`).join(" ");
+            chatbox.innerHTML = `<strong>Union Territories:</strong>${utsList}
+            <button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+
+        function showStateCategories(region) {
+            let chatbox = document.getElementById("chatbox");
+            let buttons = Object.keys(schemes).map(category => `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}")'>${category}</button>`).join(" ");
+            chatbox.innerHTML = `<strong>${region} Schemes:</strong>` + buttons + `<button class='btn btn-dark w-100 mt-2' onclick='showStates()'>Back</button>`;
+        }
+
+        function translatePage() {
+            let selectedLanguage = document.getElementById("language").value;
+            let googleTranslateScript = document.createElement("script");
+            googleTranslateScript.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            document.body.appendChild(googleTranslateScript);
+            window.googleTranslateElementInit = function() {
+                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: selectedLanguage}, 'chatbot');
+            };
+        }*/
+        const schemes = {
+            Agriculture: {
+                "Indian Schemes": ["PM Kisan", "Soil Health Card", "Kisan Credit Card"],
+                "Andhra Pradesh": ["Rythu Bandhu", "PM Kisan"],
+                "Tamil Nadu": ["Farmer Pension", "Organic Farming Scheme"],
+                "Karnataka": ["Soil Health Card", "Irrigation Support"]
+            },
+            Healthcare: {
+                "Indian Schemes": ["Ayushman Bharat", "Jan Aushadhi Yojana"]
+            },
+            Women: {
+                "Indian Schemes": ["Beti Bachao Beti Padhao", "Mahila Samriddhi Yojana"]
+            },
+            Pension: {
+                "Indian Schemes": ["Atal Pension Yojana", "National Pension Scheme"]
+            },
+            Sports: {
+                "Indian Schemes": ["Khelo India", "TOPS Scheme"]
+            },
+            Minority: {
+                "Indian Schemes": ["Post Matric Scholarship", "Maulana Azad Scholarship"]
+            },
+            Education: {
+                "Indian Schemes": ["National Scholarship Portal", "Sarva Shiksha Abhiyan"]
+            },
+            "Physically Handicapped": {
+                "Indian Schemes": ["Sugamya Bharat Abhiyan", "ADIP Scheme"]
+            }
+        };
+        
+        const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"];
+        
+        const uts = ["Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep", "Delhi", "Puducherry", "Jammu and Kashmir", "Ladakh"];
+        
+        // Show main categories (Indian Schemes, State Schemes, UT Schemes, Subsidy Calculator)
+        function showMainButtons() {
+            const chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML = `
+                <button class='btn btn-info w-100' onclick='showCategories("Indian Schemes")'>Indian Schemes</button>
+                <button class='btn btn-info w-100' onclick='showStates()'>State Schemes</button>
+                <button class='btn btn-info w-100' onclick='showUTs()'>UT Schemes</button>
+                <button class='btn btn-info w-100'>Subsidy Calculator</button>
+            `;
+        }
+        
+        // Show scheme categories (Agriculture, Healthcare, etc.) based on type
+        function showCategories(region) {
+            let chatbox = document.getElementById("chatbox");
+        
+            let buttons = Object.keys(schemes).map(category => 
+                `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}", "${region}")'>${category}</button>`
+            ).join(" ");
+        
+            chatbox.innerHTML = `<strong>${region} Schemes:</strong>` + buttons + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+        
+        // Show schemes for selected category and region
+        function showSchemes(category, region) {
+            let chatbox = document.getElementById("chatbox");
+            
+            if (!schemes[category] || !schemes[category][region]) {
+                chatbox.innerHTML = `<strong>${category} Schemes in ${region}:</strong>
+                    <p>No schemes available for this category in ${region}.</p>
+                    <button class='btn btn-dark w-100 mt-2' onclick='showCategories("${region}")'>Back</button>`;
+                return;
+            }
+        
+            let schemesList = schemes[category][region].map(scheme => `<li>${scheme}</li>`).join("");
+            
+            chatbox.innerHTML = `<strong>${category} Schemes in ${region}:</strong>
+                <ul>${schemesList}</ul>
+                <button class='btn btn-dark w-100 mt-2' onclick='showCategories("${region}")'>Back</button>`;
+        }
+        
+        // Show states list for State Schemes
+        function showStates() {
+            let chatbox = document.getElementById("chatbox");
+            let statesList = states.map(state => 
+                `<button class='btn btn-secondary w-100' onclick='showCategories("${state}")'>${state}</button>`
+            ).join(" ");
+        
+            chatbox.innerHTML = `<strong>States:</strong>` + statesList + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+        
+        // Show Union Territories list for UT Schemes
+        function showUTs() {
+            let chatbox = document.getElementById("chatbox");
+            let utsList = uts.map(ut => 
+                `<button class='btn btn-secondary w-100' onclick='showCategories("${ut}")'>${ut}</button>`
+            ).join(" ");
+        
+            chatbox.innerHTML = `<strong>Union Territories:</strong>` + utsList + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+        
+        // Add a new scheme to a category and region (Indian, State, or UT)
+        function addScheme(category, region) {
+            let newScheme = prompt(`Enter the name of the new scheme for ${region} under ${category}:`);
+        
+            if (newScheme) {
+                // Ensure category exists
+                if (!schemes[category]) {
+                    schemes[category] = {};
+                }
+        
+                // Ensure region exists within category
+                if (!schemes[category][region]) {
+                    schemes[category][region] = [];
+                }
+        
+                // Add new scheme to the correct category and region
+                schemes[category][region].push(newScheme);
+        
+                // Refresh the schemes list
+                showSchemes(category, region);
+            }
+        }
+
+
+        /* const schemes = {
+            
+            Agriculture: {
+                "Indian Schemes":["xyz"],
+                "Andhra Pradesh": ["Rythu Bandhu", "PM Kisan"],
+                "Tamil Nadu": ["Farmer Pension", "Organic Farming Scheme"],
+                "Karnataka": ["Soil Health Card", "Irrigation Support"]
+            },
+            Healthcare: [],
+            Women: [],
+            Pension: [],
+            Sports: [],
+            Minority: [],
+            Education: [],
+            "Physically Handicapped": []
+        };
+
+        const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"];
+        
+        const uts = ["Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep", "Delhi", "Puducherry", "Jammu and Kashmir", "Ladakh", "Lakshadweep"];
+
+        function showMainButtons() {
+            const chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML = `
+                <button class='btn btn-info w-100' onclick='showCategories()'>Indian Schemes</button>
+                <button class='btn btn-info w-100' onclick='showStates()'>State Schemes</button>
+                <button class='btn btn-info w-100' onclick='showUTs()'>UT Schemes</button>
+                <button class='btn btn-info w-100'>Subsidy Calculator</button>
+            `;
+        }
+
+        function showCategories() {
+            let chatbox = document.getElementById("chatbox");
+            let buttons = Object.keys(schemes).map(category => `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}")'>${category}</button>`).join(" ");
+            chatbox.innerHTML = buttons + `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+
+      
+        function showSchemes(category, region) {
+            let chatbox = document.getElementById("chatbox");
+            
+            if (!schemes[category] || !schemes[category][region]) {
+                chatbox.innerHTML = `<strong>${category} Schemes in ${region}:</strong>
+                    <p>No schemes available for this category in ${region}.</p>
+                    <button class='btn btn-dark w-100 mt-2' onclick='showStateCategories("${region}")'>Back</button>`;
+                return;
+            }
+        
+            let schemesList = schemes[category][region].map(scheme => `<li>${scheme}</li>`).join("");
+            
+            chatbox.innerHTML = `<strong>${category} Schemes in ${region}:</strong>
+                <ul>${schemesList}</ul>
+                <button class='btn btn-dark w-100 mt-2' onclick='showStateCategories("${region}")'>Back</button>`;
+        }
+        function showStateCategories(region) {
+            let chatbox = document.getElementById("chatbox");
+            let buttons = Object.keys(schemes).map(category => 
+                `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}", "${region}")'>${category}</button>`
+            ).join(" ");
+            
+            chatbox.innerHTML = `<strong>${region} Schemes:</strong>` + buttons + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showStates()'>Back</button>`;
+        }
+        
+        
+
+        function showStates() {
+            let chatbox = document.getElementById("chatbox");
+            let statesList = states.map(state => `<button class='btn btn-secondary w-100' onclick='showStateCategories("${state}")'>${state}</button>`).join(" ");
+            chatbox.innerHTML = `<strong>States:</strong>${statesList}
+            <button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+
+        function showUTs() {
+            let chatbox = document.getElementById("chatbox");
+            let utsList = uts.map(ut => `<button class='btn btn-secondary w-100' onclick='showStateCategories("${ut}")'>${ut}</button>`).join(" ");
+            chatbox.innerHTML = `<strong>Union Territories:</strong>${utsList}
+            <button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+
+      
+        function showStateCategories(region) {
+            let chatbox = document.getElementById("chatbox");
+            let buttons = Object.keys(schemes).map(category => 
+                `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}", "${region}")'>${category}</button>` 
+            ).join(" ");
+            
+            chatbox.innerHTML = `<strong>${region} Schemes:</strong>` + buttons + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showStates()'>Back</button>`;
+        }
+        
+        function addScheme(category, region) {
+            let newScheme = prompt(`Enter the name of the new scheme for ${region} under ${category}:`);
+        
+            if (newScheme) {
+                // Ensure category exists
+                if (!schemes[category]) {
+                    schemes[category] = {};
+                }
+        
+                // Ensure region exists within category
+                if (!schemes[category][region]) {
+                    schemes[category][region] = [];
+                }
+        
+                // Add new scheme to the correct category and region
+                schemes[category][region].push(newScheme);
+        
+                // Refresh the schemes list
+                showSchemes(category, region);
+            }
+        }
+        */
+        
+    </script>
+    <script>
+        function toggleChatbot() {
+            let chatbot = document.getElementById("chatbot");
+            chatbot.style.display = chatbot.style.display === "none" || chatbot.style.display === "" ? "block" : "none";
+        }
+    </script> 
+</body>
+</html>
+
+
+
+

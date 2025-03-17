@@ -104,6 +104,91 @@
     }
 
 }
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#chatbot-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+#chatbot {
+    display: none;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#chatbox {
+    height: 300px;
+    overflow-y: auto;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+.btn { margin: 5px 0; } 
+#chat-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Chatbot Container (Initially Hidden) */
+#chat-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1001;
+}
+
+/* Close Button */
+#close-chat {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
 
     </style>
     <script>
@@ -161,7 +246,7 @@
 
     <!-- Categories Section -->
     <div class="container">
-        <h2 class="mb-3"> Indian Government Schemes </h2>
+        <h2 class="mb-3"> Central Government Schemes </h2>
         <div class="row">
             <!-- Agriculture Category -->
             
@@ -254,7 +339,17 @@
             
         </div>
     </div>
+    <!--chat bot -->
+   
+    <div id="chatbot-container">
+        <button id="chatbot-button" onclick="toggleChatbot()">💬</button>
+        <div id="chatbot">
+            <div id="google_translate_element"></div>
 
+            <div id="chatbox"></div>
+            <button class="btn btn-primary w-100" onclick="showMainButtons()">Start</button>
+        </div>
+    </div> 
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container text-center">
@@ -285,14 +380,250 @@
             });
         });
     </script>
+    <script>
+            
+            const schemes = {
+                Agriculture: {
+                    "Indian Schemes": [
+                        "PM Kisan", "PMFBY", "Soil Health Card", "Kisan Credit Card", 
+                        "PM-KMY", "NMEO-OP", "MIDH", "PM-AASHA", "E-Krishi Samvad",
+                        "e-RAKAM", "PMKSY", "PKVY", "Interest Subvention Scheme",
+                        "Urea Subsidy", "PM Matsya Sampada Yojana", "Blue Revolution",
+                        "DIDF", "National Mission on Bovine Productivity",
+                        "National Program for Bovine Breeding & Dairy Development",
+                        "National Dairy Plan-I", "Dairy Entrepreneurship Development Scheme",
+                        "Quality Milk Programme", "Rashtriya Gokul Mission",
+                        "National Animal Disease Control Programme", 
+                        "PM Kisan Sampada Yojana", "Animal Husbandry Infrastructure Development Fund"
+                    ],
+                    "Andhra Pradesh": ["Rythu Bandhu", "PM Kisan"],
+                    "Tamil Nadu": ["Farmer Pension", "Organic Farming Scheme"],
+                    "Karnataka": ["Soil Health Card", "Irrigation Support"]
+                },
+                Healthcare: {
+                    "Indian Schemes": [
+                        "Ayushman Bharat", "Jan Aushadhi Yojana", "ABHIM", 
+                        "NHM", "NRHM", "NUHM", "Janani Suraksha Yojana", 
+                        "Janani Shishu Suraksha Karyakram", "PM Surakshit Matritva Abhiyan",
+                        "Universal Immunization Programme", "Mission Indradhanush", 
+                        "Rashtriya Kishor Swasthya Karyakram", "Rashtriya Bal Swasthya Karyakram",
+                        "LaQshya", "SUMAN Initiative", "MAA", "Umbrella Scheme for Family Welfare",
+                        "Intensified Diarrhea Control Fortnight", "NPCB&VI", "ICDS", "BBBP",
+                        "Kishori Health Cards", "Sukanya Yojana", "Rajiv Gandhi Saksham",
+                        "Sakhi One Stop Centres"
+                    ]
+                },
+                Women: {
+                    "Indian Schemes": [
+                        "Beti Bachao Beti Padhao", "Mahila Samriddhi Yojana", "Sukanya Samriddhi Yojana",
+                        "Udaan", "KGBV", "Digital Gender Atlas", "Janani Suraksha Yojana", 
+                        "Janani Shishu Suraksha Karyakram", "PM Surakshit Matritva Abhiyan",
+                        "Mission Indradhanush", "LaQshya", "SUMAN Initiative", "MAA",
+                        "Umbrella Scheme for Family Welfare", "Mission Parivar Vikas",
+                        "Rashtriya Arogya Nidhi", "NPCB&VI", "NACP-IV", "AMRIT",
+                        "PM Swasthya Suraksha Yojana", "Nikshay Poshan Yojana", 
+                        "Dakshata Programme", "MusQan", "IDCF", "ICDS", "BBBP",
+                        "Kishori Health Cards", "Sukanya Yojana", "SwadharGreh",
+                        "Sakhi One Stop Centres", "Mission Shakti", "Mission Poshan 2.0",
+                        "Mission Vatsalya", "SHRESTHA"
+                    ]
+                },
+                Pension: {
+                    "Indian Schemes": [
+                        "Atal Pension Yojana", "National Pension Scheme", "PMVVY",
+                        "Integrated Programme for Older Persons", "Varishtha Pension Bima Yojana",
+                        "SACRED Portal", "AVYAY"
+                    ]
+                },
+                Sports: {
+                    "Indian Schemes": [
+                        "Khelo India", "TOPS Scheme", "Rashtriya Yuva Sashaktikaran Karyakram",
+                        "Free Education for Sports Medal Winners", "PDUNWFS", "NYC",
+                        "National Youth Award", "Tenzing Norgay National Adventure Award"
+                    ]
+                },
+                Minority: {
+                    "Indian Schemes": [
+                        "Pre-Matric Scholarship Scheme",
+                        "Post-Matric Scholarship Scheme",
+                        "Merit-cum-Means Scholarship Scheme",
+                        "Pradhan Mantri Virasat Ka Samvardhan (PM VIKAS)",
+                        "Pradhan Mantri Jan Vikas Karyakram (PMJVK)",
+                        "National Minorities Development and Finance Corporation (NMDFC) Loan Schemes",
+                        "Nai Roshni",
+                        "Jiyo Parsi",
+                        "Nai Udaan",
+                        "Free Coaching and Allied Scheme",
+                        "Maulana Azad National Fellowship (MANF)",
+                        "Padho Pardesh",
+                        "Seekho Aur Kamao (Learn & Earn)",
+                        "Nai Manzil",
+                        "Hamari Dharohar",
+                        "Quami Waqf Board Taraqqiati Scheme (QWBTS) and Shahari Waqf Sampatti Vikas Yojana (SWSVY)"
+                    ]
+                },
+                
+                
+                Education: {
+                    "Indian Schemes": [
+                        "National Scholarship Portal", "Sarva Shiksha Abhiyan",
+                        "Samagra Shiksha", "PM-USHA", "PMRF", "PM Poshan",
+                        "Padhe Bharat Badhe Bharat", "Rashtriya Avishkar Abhiyan",
+                        "Vidyanjali", "KGBV", "RMSA", "RUSA", "PM Innovative Learning Programme",
+                        "EQUIP", "Udaan", "SHREYAS", "PM Research Fellowship",
+                        "AICTE-SPICES", "PM YUVA 2.0", "TEQUIP", "Digital Gender Atlas",
+                        "Dakshata Programme", "SHRESTHA"
+                    ]
+                },
+                PhysicallyHandicapped: {
+                    "Indian Schemes": [
+                        "Sugamya Bharat Abhiyan", "ADIP Scheme", "DDRS",
+                        "Unique Disability Identification (UDID) Project", "Unique Disability ID Card"
+                    ]
+                }
+        
+            
+        }; 
+        
+        const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"];
+        
+        const uts = ["Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep", "Delhi", "Puducherry", "Jammu and Kashmir", "Ladakh"];
+        
+        // Show main categories (Indian Schemes, State Schemes, UT Schemes, Subsidy Calculator)
+        function showMainButtons() {
+            const chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML = `
+                <button class='btn btn-info w-100' onclick='showCategories("Indian Schemes")'>Indian Schemes</button>
+                <button class='btn btn-info w-100' onclick='showStates()'>State Schemes</button>
+                <button class='btn btn-info w-100' onclick='showUTs()'>UT Schemes</button>
+                <button class='btn btn-info w-100'>Subsidy Calculator</button>
+            `
+            ;
+        }
+        
+        // Show scheme categories (Agriculture, Healthcare, etc.) based on type
+        function showCategories(region) {
+            let chatbox = document.getElementById("chatbox");
+        
+            let buttons = Object.keys(schemes).map(category => 
+                `<button class='btn btn-secondary w-100' onclick='showSchemes("${category}", "${region}")'>${category}</button>`
+            ).join(" ");
+        
+            chatbox.innerHTML = `<strong>${region} Schemes:</strong>` + buttons + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+        
+        // Show schemes for selected category and region
+        function showSchemes(category, region) {
+            let chatbox = document.getElementById("chatbox");
+            
+            if (!schemes[category] || !schemes[category][region]) {
+                chatbox.innerHTML = `<strong>${category} Schemes in ${region}:</strong>
+                    <p>No schemes available for this category in ${region}.</p>
+                    <button class='btn btn-dark w-100 mt-2' onclick='showCategories("${region}")'>Back</button>`;
+                return;
+            }
+        
+            let schemesList = schemes[category][region].map(scheme => `<li>${scheme}</li>`).join("");
+            
+            chatbox.innerHTML = `<strong>${category} Schemes in ${region}:</strong>
+                <ul>${schemesList}</ul>
+                <button class='btn btn-dark w-100 mt-2' onclick='showCategories("${region}")'>Back</button>`;
+        }
+        
+        // Show states list for State Schemes
+        function showStates() {
+            let chatbox = document.getElementById("chatbox");
+            let statesList = states.map(state => 
+                `<button class='btn btn-secondary w-100' onclick='showCategories("${state}")'>${state}</button>`
+            ).join(" ");
+        
+            chatbox.innerHTML = `<strong>States:</strong>` + statesList + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+        
+        // Show Union Territories list for UT Schemes
+        function showUTs() {
+            let chatbox = document.getElementById("chatbox");
+            let utsList = uts.map(ut => 
+                `<button class='btn btn-secondary w-100' onclick='showCategories("${ut}")'>${ut}</button>`
+            ).join(" ");
+        
+            chatbox.innerHTML = `<strong>Union Territories:</strong>` + utsList + 
+                `<button class='btn btn-dark w-100 mt-2' onclick='showMainButtons()'>Back</button>`;
+        }
+        
+        // Add a new scheme to a category and region (Indian, State, or UT)
+        function addScheme(category, region) {
+            let newScheme = prompt(`Enter the name of the new scheme for ${region} under ${category}:`);
+        
+            if (newScheme) {
+                // Ensure category exists
+                if (!schemes[category]) {
+                    schemes[category] = {};
+                }
+        
+                // Ensure region exists within category
+                if (!schemes[category][region]) {
+                    schemes[category][region] = [];
+                }
+        
+                // Add new scheme to the correct category and region
+                schemes[category][region].push(newScheme);
+        
+                // Refresh the schemes list
+                showSchemes(category, region);
+            }
+        }
+        
+
+        function translatePage() {
+            let selectedLanguage = document.getElementById("language").value;
+            let googleTranslateScript = document.createElement("script");
+            googleTranslateScript.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            document.body.appendChild(googleTranslateScript);
+            window.googleTranslateElementInit = function() {
+                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: selectedLanguage}, 'chatbot');
+            };
+        }
+    </script>
+    <script>
+        function toggleChatbot() {
+            let chatbot = document.getElementById("chatbot");
+            chatbot.style.display = chatbot.style.display === "none" || chatbot.style.display === "" ? "block" : "none";
+        }
+    </script> 
+    
+    <!--<div id="chat-bubble">A</div>
+
+    #Chatbot Container 
+    <div id="chat-container">
+        <span id="close-chat">✖</span>
+        <iframe src="https://bot.orimon.ai/?tenantId=5be4336e-3fb3-4815-b2dc-00e4d7d5c0aa&fullScreenBot=true"></iframe>
+    </div>
+
+    <script>
+        // Toggle Chatbot Visibility
+        document.getElementById("chat-bubble").addEventListener("click", function() {
+            document.getElementById("chat-container").style.display = "block";
+        });
+
+        // Close Chatbot
+        document.getElementById("close-chat").addEventListener("click", function() {
+            document.getElementById("chat-container").style.display = "none";
+        });
+    </script> -->
+
+
+
     
 
+    <!--<script>
+        
+        <iframe src="https://bot.orimon.ai/?tenantId=5be4336e-3fb3-4815-b2dc-00e4d7d5c0aa&fullScreenBot=true" height="100%" width="100%" frameBorder="0" border="none">
 
+        </iframe>
 
-    
-
-    
-
-    
+    </script>  -->
 </body>
 </html>
